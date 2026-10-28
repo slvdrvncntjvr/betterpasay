@@ -10,3 +10,12 @@
 Thumbs.db
 .idea/
 .vscode/
+
+# Generated application files
+node_modules/
+dist/
+.astro/
+test-results/
+playwright-report/
+.local/
+debug.log

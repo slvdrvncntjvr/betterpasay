@@ -1,0 +1,479 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import city from '../data/city.json';
+import { formatDate } from '../lib/content';
+const sources = city.sources;
+const sourceKeys = [
+  'psgc',
+  'profile',
+  'history',
+  'picc',
+  'barangay201',
+  'heritage',
+  'astrodome',
+  'moa',
+  'church',
+  'market',
+  'maps',
+] as const;
+const sourceFor = (key: string) => sources[key as keyof typeof sources];
+---
+
+<Base
+  title="Discover Pasay City"
+  description="Get to know Pasay through its history, Manila Bay geography, census figures, neighborhoods and cultural landmarks, with official sources."
+>
+  <PageIntro
+    eyebrow="Our city"
+    title="Pasay, a place to call home."
+    description="From the neighborhoods of Malibay to the bayfront and the city’s cultural landmarks, get to know the place we share."
+  />
+  <div class="container city-content">
+    <p class="review">
+      Sources reviewed{' '}
+      <time datetime={city.reviewedAt}>{formatDate(city.reviewedAt)}</time> ·{' '}
+      <a href="#sources">View sources</a>
+    </p>
+    <nav class="page-links" aria-label="On this page">
+      <a href="#geography">Location</a>
+      <a href="#history">Our history</a>
+      <a href="#places">Places to know</a>
+      <a href="/barangays/">
+        Find your barangay <Icon name="arrow" size={16} />
+      </a>
+    </nav>
+    <section class="city-facts" aria-label="Pasay in numbers">
+      <div>
+        <strong>
+          {city.statistics.population2024.toLocaleString('en-PH')}
+        </strong>
+        <span>Residents · 2024 POPCEN</span>
+        <a href={sources.psgc.url}>PSA census listing ↗</a>
+      </div>
+      <div>
+        <strong>201</strong>
+        <span>Barangays · PSA list dated 31 July 2025</span>
+        <a href="/barangays/">Explore the barangays →</a>
+      </div>
+      <div>
+        <strong>20</strong>
+        <span>Zones · City profile</span>
+        <a href={sources.profile.url}>Official city profile ↗</a>
+      </div>
+      <div>
+        <strong>2</strong>
+        <span>Local districts · City profile</span>
+        <a href="/government/#council">Meet the city council →</a>
+      </div>
+    </section>
+    <p class="census-note">
+      For comparison, the city profile reports{' '}
+      <strong>440,656 residents in the 2020 census</strong>. The 2024 and 2020
+      figures describe different census years.{' '}
+      <a href={sources.profile.url}>Read the city profile ↗</a>
+    </p>
+    <section id="geography" class="geography">
+      <div>
+        <p class="eyebrow">On the western coast of Metro Manila</p>
+        <h2>A city beside Manila Bay.</h2>
+        <p>{city.geography.description}</p>
+        <p>
+          Its neighbors are Manila to the north, Makati and Taguig to the east
+          and northeast, and Parañaque to the south. The bay forms its western
+          edge.
+        </p>
+        <a class="text-link" href={sources.maps.url}>
+          Explore the official city maps <Icon name="external" size={17} />
+        </a>
+        <p class="source-line">
+          Source: <a href={sources.profile.url}>Pasay City profile</a>
+        </p>
+      </div>
+      <div class="boundary-card">
+        <h3 class="boundary-heading">
+          <Icon name="building" size={30} />
+          <span>Pasay’s neighbors</span>
+        </h3>
+        <dl>
+          {city.geography.boundaries.map((boundary) => (
+            <div>
+              <dt>{boundary.direction}</dt>
+              <dd>{boundary.neighbor}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+    <section id="history" class="content-section">
+      <p class="eyebrow">A local timeline</p>
+      <h2>How Pasay became Pasay.</h2>
+      <p class="section-description">
+        Town, city and cultural crossroads. The early naming story is identified
+        as local tradition in the city’s own account.
+      </p>
+      <ol class="timeline">
+        {city.history.map((item) => (
+          <li>
+            <span class="timeline-date">{item.date}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <a class="source-line" href={sourceFor(item.source).url}>
+                {sourceFor(item.source).title} ↗
+              </a>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+    <section id="places" class="content-section">
+      <p class="eyebrow">Around the city</p>
+      <h2>Places that make Pasay.</h2>
+      <p class="section-description">
+        Explore arts, architecture, civic spaces and local food. Follow each
+        source for the place’s listing and current visitor information.
+      </p>
+      <div class="place-grid">
+        {city.places.map((place, index) => (
+          <article>
+            <span class="place-index">0{index + 1}</span>
+            <p class="eyebrow">{place.category}</p>
+            <h3>{place.name}</h3>
+            <p>{place.description}</p>
+            <a class="text-link" href={sourceFor(place.source).url}>
+              Read the source <Icon name="external" size={16} />
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <aside class="next-step">
+      <div>
+        <p class="eyebrow">Make yourself at home</p>
+        <h2>Your neighborhood. Your city.</h2>
+        <p>
+          Find your barangay’s PSA record, meet the city’s public officials or
+          get the right contact for a concern.
+        </p>
+      </div>
+      <div class="next-links">
+        <a href="/barangays/">
+          All 201 barangays <Icon name="arrow" size={18} />
+        </a>
+        <a href="/government/">
+          Government directory <Icon name="arrow" size={18} />
+        </a>
+        <a href="/contact/">
+          City contacts <Icon name="arrow" size={18} />
+        </a>
+      </div>
+    </aside>
+    <section id="sources" class="sources">
+      <h2>Sources & review</h2>
+      <p>
+        Reviewed {formatDate(city.reviewedAt)}. Census years and source dates
+        are kept separate from this review date.
+      </p>
+      <ul>
+        {sourceKeys.map((key) => (
+          <li>
+            <a href={sources[key].url}>
+              {sources[key].title}
+              <span>{sources[key].url}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .city-content {
+    padding-bottom: 70px;
+    color: #142d50;
+  }
+  .review,
+  .source-line {
+    font-size: 0.78rem;
+    color: #53657a;
+  }
+  .review time {
+    font-weight: 600;
+  }
+  .page-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    padding: 14px 0 26px;
+    font-size: 0.88rem;
+  }
+  .page-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .city-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    background: #112e55;
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .city-facts > div {
+    padding: 30px 24px;
+    border-right: 1px solid #ffffff29;
+  }
+  .city-facts strong {
+    display: block;
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    color: #ffcf55;
+  }
+  .city-facts span {
+    display: block;
+    font-size: 0.77rem;
+    margin: 10px 0;
+  }
+  .city-facts a {
+    font-size: 0.73rem;
+    color: #fff;
+  }
+  .census-note {
+    font-size: 0.8rem;
+    padding: 18px 0;
+    color: #53657a;
+  }
+  .geography {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 65px;
+    align-items: center;
+    padding: 50px 0;
+  }
+  .geography h2,
+  .content-section h2,
+  .next-step h2,
+  .sources h2 {
+    font-family: var(--sans);
+    font-weight: 750;
+    letter-spacing: -0.04em;
+  }
+  .geography p:not(.eyebrow):not(.source-line) {
+    color: #53657a;
+  }
+  .eyebrow {
+    color: #596b81;
+  }
+  .boundary-card {
+    margin: 0;
+    background: #f2f5fa;
+    border: 1px solid #dbe3ed;
+    border-radius: 8px;
+    padding: 26px;
+  }
+  .boundary-card dl {
+    margin: 0;
+  }
+  .boundary-card dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid #dbe3ed;
+    font-size: 0.88rem;
+  }
+  .boundary-card dl > div:last-child {
+    border-bottom: 0;
+  }
+  .boundary-card .boundary-heading {
+    display: flex;
+    gap: 20px;
+    padding: 14px 0;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 3px solid #eebf47;
+  }
+  .boundary-card dt {
+    font-weight: 650;
+  }
+  .boundary-card dd {
+    margin: 0;
+    text-align: right;
+  }
+  .content-section {
+    padding: 55px 0;
+    border-top: 1px solid #dbe3ed;
+  }
+  .section-description {
+    max-width: 740px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #53657a;
+  }
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin-top: 35px;
+  }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 34px;
+    padding: 0 0 30px;
+  }
+  .timeline-date {
+    font-weight: 750;
+    font-size: 0.85rem;
+    padding-top: 4px;
+  }
+  .timeline li > div {
+    border-left: 3px solid #efc14c;
+    padding: 0 0 8px 28px;
+  }
+  .timeline h3 {
+    margin-bottom: 10px;
+  }
+  .timeline p {
+    max-width: 760px;
+    font-size: 0.91rem;
+    color: #53657a;
+    margin-bottom: 8px;
+  }
+  .place-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .place-grid article {
+    border: 1px solid #dbe3ed;
+    background: #fff;
+    border-radius: 7px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .place-grid article > p:not(.eyebrow) {
+    color: #53657a;
+    font-size: 0.87rem;
+  }
+  .place-grid article .text-link {
+    margin-top: auto;
+  }
+  .place-index {
+    font-size: 1.9rem;
+    font-weight: 750;
+    color: #9a7219;
+    margin-bottom: 22px;
+  }
+  .next-step {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 50px;
+    border-radius: 8px;
+    background: #fff5d8;
+    padding: 35px;
+    margin-block: 25px 50px;
+  }
+  .next-step h2 {
+    font-size: 1.8rem;
+  }
+  .next-step p {
+    font-size: 0.88rem;
+  }
+  .next-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+  .next-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 0.9rem;
+    font-weight: 650;
+  }
+  .sources {
+    border-top: 1px solid #dbe3ed;
+    padding-top: 30px;
+    font-size: 0.8rem;
+    color: #53657a;
+  }
+  .sources h2 {
+    font-size: 1.5rem;
+    color: #142d50;
+  }
+  .sources ul {
+    padding-left: 20px;
+  }
+  .sources li {
+    margin-bottom: 12px;
+  }
+  .sources a span {
+    display: block;
+    font-size: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+  .source-line {
+    display: block;
+    margin-top: 15px;
+  }
+  @media (max-width: 850px) {
+    .city-facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .geography {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+    .place-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .next-step {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    .timeline li {
+      grid-template-columns: 145px 1fr;
+      gap: 15px;
+    }
+  }
+  @media (max-width: 520px) {
+    .city-facts > div {
+      padding: 23px 16px;
+    }
+    .city-facts strong {
+      font-size: 2rem;
+    }
+    .place-grid {
+      grid-template-columns: 1fr;
+    }
+    .timeline li {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .timeline-date {
+      padding-left: 30px;
+    }
+    .next-step {
+      padding: 24px;
+    }
+    .geography {
+      padding-top: 30px;
+    }
+    .content-section {
+      padding-block: 35px;
+    }
+  }
+</style>

@@ -1,0 +1,78 @@
+[
+  {
+    "id": "citizens-charter",
+    "title": "Citizen’s Charter",
+    "category": "Service standards",
+    "description": "The city’s published reference for service requirements, processes, fees and timelines.",
+    "sourceId": "charter",
+    "period": "2026 edition",
+    "caution": "Large PDF · about 28 MB, 1,193 pages. Selected resident-service sections have been reviewed; this is not a review of every section. The document library links directly to relevant pages.",
+    "provenanceId": "transparency"
+  },
+  {
+    "id": "budget-reports",
+    "title": "City budget reports",
+    "category": "Public finances",
+    "description": "Find the city’s financial reports and budget ordinances in the official document index.",
+    "sourceId": "budget",
+    "period": "Multiple reporting periods",
+    "caution": "An index of published records; completeness has not been assessed."
+  },
+  {
+    "id": "financial-operations",
+    "title": "Financial Report of Operations",
+    "category": "Public finances",
+    "description": "A direct link to the report listed by the city for the period ending September 30, 2026.",
+    "sourceId": "fro",
+    "period": "As of 30 September 2026",
+    "caution": "Image-based PDF. Figures have not been transcribed or analyzed by Better Pasay.",
+    "provenanceId": "budget"
+  },
+  {
+    "id": "full-disclosure",
+    "title": "Full disclosure reports",
+    "category": "Public finances",
+    "description": "Browse the city’s disclosure index by report type, year and quarter.",
+    "sourceId": "disclosure",
+    "period": "Multiple reporting periods",
+    "caution": "Some listed records may not have an accessible attachment."
+  },
+  {
+    "id": "bid-opportunities",
+    "title": "Bid opportunities",
+    "category": "Procurement",
+    "description": "View the city’s published procurement opportunities and associated documents.",
+    "sourceId": "bids",
+    "period": "Ongoing index",
+    "caution": "Check the original posting for deadlines and amendments."
+  },
+  {
+    "id": "award-notices",
+    "title": "Award notices",
+    "category": "Procurement",
+    "description": "Find notices about the award of city procurement contracts.",
+    "sourceId": "awards",
+    "period": "Ongoing index",
+    "caution": "An award notice does not establish contract completion or payment."
+  },
+  {
+    "id": "ordinances",
+    "title": "Ordinances & resolutions",
+    "category": "Local legislation",
+    "description": "Explore the City Secretariat’s legislative record portal, linked from the official city website.",
+    "sourceId": "laws",
+    "period": "Legislative record portal",
+    "caution": "Separate city-linked domain. Confirm the text and status of any individual measure.",
+    "provenanceId": "transparency"
+  },
+  {
+    "id": "satisfaction-report",
+    "title": "Client satisfaction report",
+    "category": "Service standards",
+    "description": "Read the city’s report on service feedback, including its scope and methodology.",
+    "sourceId": "csmr",
+    "period": "2025 report · 1st edition",
+    "caution": "Published by the city; Better Pasay has not independently audited the survey.",
+    "provenanceId": "transparency"
+  }
+]

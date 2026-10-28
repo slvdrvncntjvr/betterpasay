@@ -1,0 +1,149 @@
+﻿---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import { project } from '../lib/content';
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/services/', label: 'Services' },
+  { href: '/city/', label: 'Our city' },
+  { href: '/government/', label: 'Government' },
+  { href: '/barangays/', label: 'Barangays' },
+  { href: '/documents/', label: 'Documents' },
+  { href: '/transparency/', label: 'Transparency' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#102b55" />
+    <meta property="og:title" content={`${title} | Better Pasay`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/manrope-regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <title>{title} | Better Pasay</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="community-bar">
+      <div class="container">
+        <span>
+          <Icon name="people" size={14} /> An independent, community-built
+          guide. <strong>Not an official government website.</strong>
+        </span>
+        <div class="utility-links">
+          <a href="/about/">About the project</a>
+          <a href="https://pasay.gov.ph/">
+            Official city website <Icon name="external" size={12} />
+          </a>
+        </div>
+      </div>
+    </div>
+    <header class="header-wrap">
+      <div class="site-header container">
+        <a class="brand" href="/" aria-label="Better Pasay home">
+          <span class="brand-mark" aria-hidden="true">
+            <Icon name="sun" size={27} />
+            <span class="brand-waves"></span>
+          </span>
+          <span>
+            better
+            <span class="brand-place">
+              pasay<span class="brand-period">.</span>
+            </span>
+          </span>
+        </a>
+        <nav aria-label="Main navigation">
+          {nav.map(({ href, label }) => (
+            <a
+              href={href}
+              aria-current={
+                (href === '/' ? path === href : path.startsWith(href))
+                  ? 'page'
+                  : undefined
+              }
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        <a class="header-hotline" href="/contact/">
+          <Icon name="phone" size={16} />
+          <span>Hotlines & help</span>
+        </a>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-intro">
+          <a class="footer-brand" href="/">
+            better pasay<span>.</span>
+          </a>
+          <p>
+            A better city starts
+            <br />
+            with better information.
+          </p>
+          <p class="small">
+            An open-source, community-led guide to Pasay City. Built by
+            volunteers, for everyone who calls it home.
+          </p>
+          <a class="footer-network" href="https://lgu.bettergov.ph/">
+            Explore the Better LGU directory <Icon name="external" size={14} />
+          </a>
+        </div>
+        <div>
+          <h2>Your city</h2>
+          <a href="/city/">Discover Pasay</a>
+          <a href="/government/">Government directory</a>
+          <a href="/barangays/">Find your barangay</a>
+          <a href="/contact/">Contacts & hotlines</a>
+        </div>
+        <div>
+          <h2>Your resources</h2>
+          <a href="/services/">Public services</a>
+          <a href="/documents/">Documents & guides</a>
+          <a href="/transparency/">Transparency</a>
+          <a href="https://pasay.gov.ph/">Official city portal ↗</a>
+        </div>
+        <div>
+          <h2>Build with us</h2>
+          <a href="/about/">About Better Pasay</a>
+          <a href="/about/#contribute">Become a contributor</a>
+          <a href={project.issues}>Suggest a correction ↗</a>
+          <a href={project.repository}>Source code on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>
+          © {new Date().getFullYear()} Better Pasay. Made for the community.
+        </span>
+        <span>
+          <span class="status-dot"></span> Open source. Open to everyone.
+        </span>
+        <a href="/about/#credits">Sources & image credits</a>
+      </div>
+    </footer>
+  </body>
+</html>

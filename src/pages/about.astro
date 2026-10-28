@@ -1,0 +1,213 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { project, formatDate } from '../lib/content';
+---
+
+<Base
+  title="About the community project"
+  description="Meet Better Pasay’s community maintainer, learn our information standards, and find out how to contribute sources or report corrections."
+>
+  <PageIntro
+    eyebrow="About Better Pasay"
+    title="A city guide. A shared effort."
+    description="Public information should be easier to find, understand and verify. Better Pasay brings our city, its services, and its public records a little closer to everyone."
+  />
+  <div class="container about-layout">
+    <div class="about-content">
+      <section>
+        <p class="eyebrow">Why we’re here</p>
+        <h2>
+          Less searching.
+          <br />
+          More understanding.
+        </h2>
+        <p>
+          Better Pasay brings service links and public records into one
+          resident-friendly guide. We write short community summaries and send
+          you to the original source for the details.
+        </p>
+        <p>
+          This is an independent, community-led project for Pasay City, Metro
+          Manila. It is not an official government website. We do not process
+          applications, collect fees or speak for the city government.
+        </p>
+        <p>
+          The project is registered in the{' '}
+          <a href="https://github.com/jmacj/better-lgu-directory">
+            Better LGU Directory
+          </a>{' '}
+          through{' '}
+          <a href="https://github.com/jmacj/better-lgu-directory/pull/319">
+            PR #319
+          </a>
+          . Directory registration does not imply government endorsement or
+          formal affiliation with BetterGov.ph.
+        </p>
+      </section>
+      <section id="standards">
+        <p class="eyebrow">Our information standards</p>
+        <h2>Useful information earns trust.</h2>
+        <ol class="standards-list">
+          <li>
+            <strong>Start at the source.</strong>
+            <p>
+              Use public government pages and documents. For a separate domain,
+              trace its link from an official city page.
+            </p>
+          </li>
+          <li>
+            <strong>Show what was checked, and when.</strong>
+            <p>
+              Each entry has a source and a verification date. A document’s
+              edition or reporting period is kept separate from its publication
+              date.
+            </p>
+          </li>
+          <li>
+            <strong>Be clear about the gaps.</strong>
+            <p>
+              We label limited reviews and omit unverified requirements, fees,
+              contacts and statistics. A checked source may still change or
+              contain errors.
+            </p>
+          </li>
+          <li>
+            <strong>Keep corrections open.</strong>
+            <p>
+              Anyone can suggest a correction with a supporting source. Changes
+              are reviewed through the public repository.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section id="contribute">
+        <p class="eyebrow">Make the guide better</p>
+        <h2>You don’t have to write code.</h2>
+        <p>
+          Help check a source, improve a Filipino search term, test on your
+          phone, or explain where a page is confusing.
+        </p>
+        <div class="contribution-steps">
+          <div>
+            <span>01</span>
+            <h3>Find something to improve</h3>
+            <p>Note the page or service and what is missing or incorrect.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <h3>Bring a public source</h3>
+            <p>
+              Include the original URL and the date you checked it. Explain the
+              proposed correction.
+            </p>
+          </div>
+          <div>
+            <span>03</span>
+            <h3>Open an issue or pull request</h3>
+            <p>
+              Use GitHub to share your suggestion with the community maintainer.
+            </p>
+          </div>
+        </div>
+        <p class="notice">
+          <strong>Keep reports public and safe to share.</strong> Do not include
+          IDs, medical records, private phone numbers, application documents or
+          other personal information in GitHub issues.
+        </p>
+        <div class="inline-actions">
+          <a
+            class="button"
+            href={`${project.issues}/new?template=content-correction.yml`}
+          >
+            Report a correction <Icon name="external" size={18} />
+          </a>
+          <a href={`${project.repository}/blob/main/CONTRIBUTING.md`}>
+            Read the contribution guide ↗
+          </a>
+        </div>
+        <p class="small">
+          GitHub requires an account to submit issues or pull requests. For
+          government concerns, use the{' '}
+          <a href="https://pasay.gov.ph/contact-us/">
+            city’s official contact page
+          </a>
+          .
+        </p>
+      </section>
+      <section id="credits">
+        <p class="eyebrow">Sources & image credits</p>
+        <h2>Public knowledge. Proper credit.</h2>
+        <p>
+          Service summaries link to Pasay City Government’s original guides and
+          the 2026 Citizen’s Charter. City and barangay pages identify their
+          official sources, census years, and review dates. Explore{' '}
+          <a href="/documents/">the document library</a> and{' '}
+          <a href="/city/#sources">our city sources</a>.
+        </p>
+        <p>
+          The homepage photograph of the Mall of Asia complex is by{' '}
+          <a href="https://commons.wikimedia.org/wiki/User:Lawrence_ruiz">
+            Lawrence Ruiz
+          </a>
+          , taken 24 May 2016.{' '}
+          <a href="https://commons.wikimedia.org/wiki/File:View_of_Pasay_City_at_SM_Mall_of_Asia.tif">
+            Original photograph
+          </a>
+          ,{' '}
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+            CC BY-SA 4.0
+          </a>
+          . Converted to WebP, displayed with a crop and color overlay; the
+          photograph retains its original license.
+        </p>
+        <p>
+          The Manila Bay sunset photograph is by Patrick Roque, taken 31
+          December 2017 from the Mall of Asia seaside.{' '}
+          <a href="https://commons.wikimedia.org/wiki/File:Manila_Bay_sunset_-_from_Mall_of_Asia_seaside_(Pasay)(2017-12-31).jpg">
+            Original photograph
+          </a>
+          ,{' '}
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+            CC BY-SA 4.0
+          </a>
+          . Resized, converted to WebP, and cropped for display. Photographs are
+          historical views, not live imagery.
+        </p>
+        <p>
+          Manrope is locally hosted under the{' '}
+          <a href="/fonts/OFL.txt">SIL Open Font License</a>. The design takes
+          inspiration from the{' '}
+          <a href="https://lgu.bettergov.ph/">Better LGU community</a>; no other
+          portal’s code, branding, or locality data has been copied.
+        </p>
+      </section>
+    </div>
+    <aside class="maintainer-card">
+      <span class="maintainer-monogram" aria-hidden="true">
+        bp.
+      </span>
+      <p class="eyebrow">Community maintained</p>
+      <h2>@slvdrvncntjvr</h2>
+      <p>Project maintainer</p>
+      <a href={project.maintainer}>View GitHub profile ↗</a>
+      <hr />
+      <p>
+        <span class="status-dot"></span> <strong>Work in Progress</strong>
+      </p>
+      <p class="small">
+        A growing city guide, with sourced services, official documents,
+        government information, and all 201 barangays.
+      </p>
+      <p class="small">
+        Initial source review
+        <br />
+        <time datetime={project.checkedAt}>
+          {formatDate(project.checkedAt)}
+        </time>
+      </p>
+      <a href={project.repository}>Explore the source code ↗</a>
+    </aside>
+  </div>
+</Base>

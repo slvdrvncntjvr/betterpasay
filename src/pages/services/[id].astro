@@ -1,0 +1,440 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Icon from '../../components/Icon.astro';
+import {
+  services,
+  sourceFor,
+  formatDate,
+  correctionUrl,
+  type Service,
+} from '../../lib/content';
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { id: service.id },
+    props: { service },
+  }));
+}
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+const details = service as Service & {
+  requirements?: string[];
+  steps?: string[];
+  fee?: string;
+  timing?: string;
+  edition?: string;
+  pages?: string;
+  scope?: string;
+};
+const source = sourceFor(service.sourceId);
+---
+
+<Base title={service.title} description={service.description}>
+  <div class="service-detail">
+    <PageIntro
+      eyebrow="Service guide"
+      title={service.title}
+      description={service.description}
+    />
+    <article class="container guide-body">
+      <div class="guide-toolbar">
+        <a href="/services/">← All services</a>
+        <span lang="fil">{service.filipino}</span>
+      </div>
+      <div class="guide-layout">
+        <div class="guide-content">
+          <section class="office-card" aria-labelledby="office-heading">
+            <Icon name="building" size={28} />
+            <div>
+              <p class="eyebrow" id="office-heading">
+                Responsible office or source
+              </p>
+              <h2>{service.office}</h2>
+              {details.scope && <p>{details.scope}</p>}
+            </div>
+          </section>
+          {details.edition && (
+            <p class="edition-note">
+              <Icon name="book" size={19} />
+              <span>
+                Based on the <strong>{details.edition}</strong>, pages{' '}
+                {details.pages}. Confirm current requirements before visiting.
+              </span>
+            </p>
+          )}
+          <section class="guide-section" aria-labelledby="requirements-heading">
+            <p class="eyebrow section-kicker">01 / Prepare</p>
+            <h2 id="requirements-heading">What to bring</h2>
+            {details.requirements?.length ? (
+              <ul class="requirement-list">
+                {details.requirements.map((item) => (
+                  <li>
+                    <Icon name="check" size={18} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="unknown">
+                A complete checklist has not been verified for this page. Open
+                the official guide and ask the responsible office which
+                requirements apply to your case.
+              </p>
+            )}
+          </section>
+          <section class="guide-section" aria-labelledby="steps-heading">
+            <p class="eyebrow section-kicker">02 / Apply</p>
+            <h2 id="steps-heading">How it works</h2>
+            {details.steps?.length ? (
+              <ol class="step-list">
+                {details.steps.map((step, index) => (
+                  <li>
+                    <span class="step-number" aria-hidden="true">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <p>{step}</p>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p class="unknown">
+                The full application process is not summarized here. Follow the
+                steps on the official source; online listings may have their own
+                application instructions.
+              </p>
+            )}
+          </section>
+          <section class="guide-section" aria-labelledby="cost-heading">
+            <p class="eyebrow section-kicker">03 / Plan your visit</p>
+            <h2 id="cost-heading">Fees & processing time</h2>
+            <div class="planning-grid">
+              <div>
+                <h3>Fees</h3>
+                <p>
+                  {details.fee ??
+                    'Not verified for this page. Ask the office for the current assessment; do not assume the service or supporting documents are free.'}
+                </p>
+              </div>
+              <div>
+                <h3>Processing time</h3>
+                <p>
+                  {details.timing ??
+                    'Not verified for this page. Confirm the current schedule, assessment and release arrangements with the office.'}
+                </p>
+              </div>
+            </div>
+            <p class="small">
+              Charter standards describe the published process. Queues,
+              incomplete documents, case review and supporting-document requests
+              can change your visit.
+            </p>
+          </section>
+        </div>
+        <aside class="official-card" aria-labelledby="source-heading">
+          <p class="eyebrow">Go to the source</p>
+          <h2 id="source-heading">The official guide</h2>
+          <p>{source.title}</p>
+          <a class="official-button" href={source.url}>
+            {service.action}
+            <Icon name="external" size={18} />
+          </a>
+          <p class="source-format">
+            {source.format} · {source.publisher}
+          </p>
+          <dl>
+            <dt>Last checked</dt>
+            <dd>
+              <time datetime={source.checkedAt}>
+                {formatDate(source.checkedAt)}
+              </time>
+            </dd>
+            <dt>Publication date</dt>
+            <dd>
+              {source.publishedAt
+                ? formatDate(source.publishedAt)
+                : 'Not stated by the source'}
+            </dd>
+            <dt>What we reviewed</dt>
+            <dd>{source.note}</dd>
+          </dl>
+          <a class="related-link" href="/documents/">
+            Browse the document library <Icon name="arrow" size={17} />
+          </a>
+          <a class="correction-link" href={correctionUrl(service.title)}>
+            Report a correction on GitHub ↗
+          </a>
+        </aside>
+      </div>
+      <div class="application-help">
+        <Icon name="message" size={26} />
+        <p>
+          <strong>Need help with an application?</strong>{' '}
+          <a href="https://pasay.gov.ph/contact-us/">Contact the city</a>.
+          Better Pasay is an independent community guide. Submit documents and
+          payments only through the city’s official channels.
+        </p>
+      </div>
+    </article>
+  </div>
+</Base>
+<style>
+  .service-detail {
+    color: #132d50;
+    background: #fff;
+  }
+  .service-detail :global(h1),
+  .service-detail :global(h2) {
+    font-family: var(--sans);
+    font-weight: 700;
+  }
+  .guide-body {
+    padding-bottom: 72px;
+  }
+  .guide-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid #dae2eb;
+    font-size: 0.85rem;
+  }
+  .guide-toolbar a {
+    font-weight: 700;
+  }
+  .guide-toolbar span {
+    color: #52647b;
+  }
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 48px;
+    align-items: start;
+  }
+  .office-card {
+    display: flex;
+    gap: 20px;
+    padding: 28px;
+    background: #f1f5fa;
+    border: 1px solid #dae2eb;
+    border-radius: 14px;
+  }
+  .office-card > :global(svg) {
+    margin-top: 4px;
+    color: #173e70;
+  }
+  .office-card .eyebrow {
+    margin-bottom: 8px;
+  }
+  .office-card h2 {
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .office-card p:last-child {
+    margin-bottom: 0;
+    font-size: 0.92rem;
+    color: #465c76;
+  }
+  .edition-note {
+    display: flex;
+    gap: 12px;
+    padding: 18px 0 0;
+    font-size: 0.84rem;
+    color: #4b607a;
+  }
+  .edition-note :global(svg) {
+    margin-top: 4px;
+  }
+  .guide-section {
+    padding: 32px 0;
+    border-bottom: 1px solid #dae2eb;
+  }
+  .section-kicker {
+    color: #52647b;
+    margin-bottom: 10px;
+  }
+  .guide-section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 25px;
+    letter-spacing: -0.03em;
+  }
+  .requirement-list {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+  .requirement-list li {
+    display: flex;
+    gap: 13px;
+    margin: 18px 0;
+  }
+  .requirement-list :global(svg) {
+    background: #ffda59;
+    border-radius: 50%;
+    padding: 2px;
+    margin-top: 5px;
+  }
+  .step-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .step-list li {
+    display: flex;
+    gap: 18px;
+    padding: 14px 0;
+  }
+  .step-list p {
+    margin: 2px 0 0;
+  }
+  .step-number {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    background: #edf2f8;
+    color: #173e70;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .planning-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .planning-grid h3 {
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+  .planning-grid p,
+  .unknown {
+    color: #465c76;
+    font-size: 0.94rem;
+  }
+  .official-card {
+    position: sticky;
+    top: 24px;
+    padding: 28px;
+    background: #102d51;
+    color: #fff;
+    border-radius: 14px;
+    border-top: 5px solid #ffda59;
+  }
+  .official-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+  }
+  .official-card p {
+    font-size: 0.92rem;
+  }
+  .official-card .eyebrow {
+    color: #ffda59;
+  }
+  .official-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 15px;
+    background: #ffda59;
+    color: #102d51;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .source-format {
+    color: #d2deee;
+    margin: 12px 0 24px;
+    font-size: 0.75rem !important;
+  }
+  .official-card dl {
+    margin: 0;
+    border-top: 1px solid #45607e;
+    padding-top: 20px;
+  }
+  .official-card dt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #c7d8ee;
+    margin-bottom: 3px;
+  }
+  .official-card dd {
+    color: #e1e9f5;
+    margin: 0 0 18px;
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+  .official-card a:hover {
+    color: #ffda59;
+  }
+  .official-card .official-button:hover {
+    background: #ffe891;
+    color: #102d51;
+  }
+  .related-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.82rem;
+    border-top: 1px solid #45607e;
+    padding-top: 20px;
+  }
+  .correction-link {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.76rem;
+    color: #d2deee;
+  }
+  .application-help {
+    display: flex;
+    gap: 18px;
+    margin-top: 36px;
+    padding: 24px;
+    background: #fff9e5;
+    border: 1px solid #e8daac;
+    border-radius: 10px;
+  }
+  .application-help p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .application-help :global(svg) {
+    margin-top: 3px;
+  }
+  @media (max-width: 960px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 24px;
+    }
+    .official-card {
+      padding: 22px;
+    }
+  }
+  @media (max-width: 760px) {
+    .guide-layout {
+      grid-template-columns: 1fr;
+    }
+    .official-card {
+      position: static;
+    }
+    .guide-toolbar {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .planning-grid {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .office-card {
+      padding: 20px;
+      gap: 12px;
+    }
+  }
+</style>

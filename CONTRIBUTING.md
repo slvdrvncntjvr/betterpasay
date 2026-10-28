@@ -1,28 +1,33 @@
-# Contributing to Better Pasay
+﻿# Contributing to Better Pasay
 
-Better Pasay is currently in the planning stage. Contributions to scope, public-source research, accessibility requirements, and implementation proposals are welcome.
+Better Pasay is **Work in Progress**. Help with public-source research, corrections, Filipino wording, accessibility and development is welcome. Maintainer: [@slvdrvncntjvr](https://github.com/slvdrvncntjvr).
 
-## Propose work
+## Propose a change
 
-1. Search existing issues before opening a new one.
-2. Describe the resident need, proposed change, and any supporting public sources.
-3. Discuss major technology or scope changes in an issue before beginning implementation.
+Search [existing issues](https://github.com/slvdrvncntjvr/betterpasay/issues). Describe the resident need, affected page and supporting public source. Discuss major scope or technology changes before implementation. The initial milestone is authorized by the maintainer's project brief.
 
-## Submit a pull request
+You do not need to code to [suggest a correction](https://github.com/slvdrvncntjvr/betterpasay/issues/new?template=content-correction.yml). GitHub submissions are public and require an account. Never attach IDs, medical records, private correspondence or application documents.
 
-1. Fork the repository and create a focused branch.
-2. Make your change and update related documentation.
-3. Check Markdown formatting, relative links, and factual claims. Run applicable build and test checks once application tooling exists.
-4. Open a pull request explaining what changed, why it helps, and how you verified it. Link the related issue when applicable.
+## Content requirements
 
-There is no application tooling to install or test yet. Please do not claim a feature is implemented until the corresponding code and documentation are present.
+- Cite original public sources and actual review dates. Trace a separate city domain to the official page identifying it.
+- Keep publication dates, reporting periods and dates checked distinct. Upload folders do not prove publication dates.
+- Write short community summaries. Use originals for complete checklists, fees, timelines and eligibility; do not guess.
+- Disclose the review scope. Link verification is not a full document review.
+- Do not invent statistics, contacts, endorsements, vacancies or availability claims.
+- Respect reuse terms. Original source material retains its own rights.
+- Keep personal records, credentials, secrets and non-public information out of the repository.
 
-## Content and source requirements
+Follow [content maintenance](docs/CONTENT.md) and consult [the initial research](docs/RESEARCH.md).
 
-- Use publicly available, attributable information and link directly to its original source.
-- Record the date a source was checked, and distinguish community summaries from official wording.
-- Identify corrections clearly and include the supporting source.
-- Do not commit personal records, private correspondence, credentials, or files containing secrets.
-- Check the reuse terms of any third-party material and retain required attribution.
+## Development and pull requests
 
-Please keep discussions respectful and focused on making public information useful to Pasay residents. Submit only work you have permission to contribute under the repository's MIT license; identify third-party material and its separate terms.
+1. Fork and create a focused branch.
+2. Follow [README.md](README.md) to install and run locally.
+3. Update related documentation and evidence with your change.
+4. Run `npm run validate` after installing Playwright Chromium. Manually check relevant mobile/keyboard flows.
+5. Open a PR explaining the resident-facing change, sources, validation and remaining limitations.
+
+Read the actual sources for content changes; an availability checker cannot certify accuracy. Preserve visible focus, contrast, native links/buttons and the no-JavaScript directory. Routine contributions do not deploy publicly; deployment requires a separate maintainer instruction.
+
+Keep discussions respectful. Original contributions must be available under the MIT license; identify any third-party material and its separate terms.

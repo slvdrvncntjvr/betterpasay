@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import {
+  resources,
+  sourceFor,
+  formatDate,
+  correctionUrl,
+} from '../lib/content';
+const groups = [
+  'Public finances',
+  'Procurement',
+  'Local legislation',
+  'Service standards',
+];
+---
+
+<Base
+  title="Transparency resources"
+  description="Follow original Pasay sources for budget reports, procurement, ordinances and service standards. Includes review notes and verification dates."
+>
+  <PageIntro
+    eyebrow="Transparency"
+    title="Follow the public record."
+    description="A guide to the city’s published documents. Go to the original, check the reporting period, and read the details in context."
+  />
+  <section class="container resources-section">
+    <div class="notice">
+      <Icon name="book" />
+      <p>
+        <strong>Sources, with context.</strong> These links lead to
+        city-published material. A checked link is not an independent audit of
+        the document or its claims. Community summaries appear below; original
+        wording stays at the source.
+      </p>
+    </div>
+    <nav class="resource-jump" aria-label="Resource categories">
+      {groups.map((group, index) => (
+        <a href={`#resource-${index}`}>
+          {group} <span aria-hidden="true">↓</span>
+        </a>
+      ))}
+    </nav>
+    {groups.map((group, index) => (
+      <section class="resource-group" id={`resource-${index}`}>
+        <div class="resource-group-heading">
+          <span class="eyebrow">0{index + 1}</span>
+          <h2>{group}</h2>
+        </div>
+        <div class="resource-list">
+          {resources
+            .filter((item) => item.category === group)
+            .map((item) => {
+              const source = sourceFor(item.sourceId);
+              const provenance = item.provenanceId
+                ? sourceFor(item.provenanceId)
+                : null;
+              return (
+                <article class="resource-card">
+                  <div class="resource-title">
+                    <span class="resource-format">{source.format}</span>
+                    <h3>
+                      <a href={source.url}>
+                        {item.title} <Icon name="external" size={18} />
+                      </a>
+                    </h3>
+                    <p class="small">{item.period}</p>
+                  </div>
+                  <div>
+                    <p>{item.description}</p>
+                    <p class="resource-caution">{item.caution}</p>
+                    <details>
+                      <summary>Source & verification details</summary>
+                      <dl>
+                        <dt>Publisher</dt>
+                        <dd>{source.publisher}</dd>
+                        <dt>Source checked</dt>
+                        <dd>
+                          <time datetime={source.checkedAt}>
+                            {formatDate(source.checkedAt)}
+                          </time>
+                        </dd>
+                        <dt>Publication / posting date</dt>
+                        <dd>
+                          {source.publishedAt
+                            ? `${formatDate(source.publishedAt)} · date listed by the city`
+                            : 'Not stated / not verified'}
+                        </dd>
+                        <dt>What we checked</dt>
+                        <dd>{source.note}</dd>
+                      </dl>
+                      <a href={source.url}>Open original source ↗</a>
+                      {provenance && (
+                        <p>
+                          <a href={provenance.url}>
+                            Listed on: {provenance.title} ↗
+                          </a>
+                        </p>
+                      )}
+                      <p>
+                        <a href={correctionUrl(item.title)}>
+                          Report a correction ↗
+                        </a>
+                      </p>
+                    </details>
+                    <p class="source-date">
+                      {source.verification === 'linked'
+                        ? 'Official link checked'
+                        : 'Source page reviewed'}{' '}
+                      ·{' '}
+                      <time datetime={source.checkedAt}>
+                        {formatDate(source.checkedAt)}
+                      </time>
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+        </div>
+      </section>
+    ))}
+    <aside class="directory-gap">
+      <h2>What’s still missing?</h2>
+      <p>
+        We have not verified a complete Pasay audit-report collection, project
+        tracker or historical budget dataset. No budget totals or performance
+        rankings are published here.{' '}
+        <a href="/about/#contribute">Help us find reliable public sources.</a>
+      </p>
+    </aside>
+  </section>
+</Base>

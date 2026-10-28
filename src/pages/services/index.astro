@@ -1,0 +1,202 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Icon from '../../components/Icon.astro';
+import { services, categories, project } from '../../lib/content';
+---
+
+<Base
+  title="Public service directory"
+  description="Search Pasay service guides by keyword or category. Find original city sources for documents, permits, taxes, employment and family support."
+>
+  <PageIntro
+    eyebrow="Public services"
+    title="Find your next step."
+    description="A starting point for city services. Search in English or try familiar terms like sedula, amilyar and trabaho."
+  />
+  <section class="container directory-section" aria-label="Service directory">
+    <div class="notice">
+      <Icon name="book" />
+      <p>
+        <strong>Read the source before you go.</strong> These are community
+        summaries, not application instructions. Confirm current requirements,
+        fees and availability with the responsible office.
+      </p>
+    </div>
+    <form
+      id="directory-controls"
+      class="directory-controls"
+      role="search"
+      hidden
+    >
+      <label for="service-search">Search public services</label>
+      <div class="directory-search">
+        <Icon name="search" size={21} />
+        <input
+          id="service-search"
+          type="search"
+          name="q"
+          maxlength="160"
+          placeholder="Search a service, office or keyword…"
+          autocomplete="off"
+        />
+        <button type="submit" class="button">
+          Search
+        </button>
+      </div>
+      <fieldset class="filter-fieldset">
+        <legend>Filter by category</legend>
+        <div class="filter-chips">
+          <button type="button" data-filter="all" aria-pressed="true">
+            All services <span>{services.length}</span>
+          </button>
+          {categories.map((category) => (
+            <button
+              type="button"
+              data-filter={category.id}
+              aria-pressed="false"
+            >
+              {category.short}
+              <span>
+                {
+                  services.filter((service) => service.category === category.id)
+                    .length
+                }
+              </span>
+            </button>
+          ))}
+        </div>
+      </fieldset>
+    </form>
+    <p id="directory-fallback" class="notice">
+      All services are listed below. Search controls appear when ready. If they
+      are unavailable, use your browser’s Find command to search this page.
+    </p>
+    <div id="directory-error" class="notice" role="alert" hidden>
+      Search could not start. All services are listed below. Use your browser’s
+      Find command, or reload to try again.
+    </div>
+    <div class="results-heading">
+      <h2 class="eyebrow">The service directory</h2>
+      <p
+        id="results-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {services.length} services
+      </p>
+    </div>
+    <div class="service-grid" id="service-results">
+      {services.map((service) => (
+        <ServiceCard service={service} filterable />
+      ))}
+    </div>
+    <div id="empty-state" class="empty-state" hidden>
+      <Icon name="search" size={36} />
+      <h2>No matching services yet.</h2>
+      <p>
+        Try a shorter keyword or another category. This directory is still
+        growing.
+      </p>
+      <button id="reset-search" class="button" type="button">
+        Clear search and filters
+      </button>
+      <a href={project.issues}>Suggest a service on GitHub ↗</a>
+    </div>
+    <aside class="directory-gap">
+      <h2>Can’t find what you need?</h2>
+      <p>
+        Browse the <a href="/documents/">document library</a> for official
+        guides and the Citizen’s Charter. For a service not yet covered, visit
+        the{' '}
+        <a href="https://pasay.gov.ph/serbisyo/">official city service page</a>{' '}
+        or <a href="https://pasay.gov.ph/contact-us/">contact the city</a> for
+        assistance.
+      </p>
+    </aside>
+  </section>
+</Base>
+<script>
+  import { matches } from '../../lib/search';
+
+  const controls = document.querySelector<HTMLFormElement>(
+    '#directory-controls',
+  );
+  const cards = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-service]'),
+  );
+  try {
+    const search = document.querySelector<HTMLInputElement>('#service-search')!;
+    const status = document.querySelector<HTMLElement>('#results-status')!;
+    const empty = document.querySelector<HTMLElement>('#empty-state')!;
+    const buttons = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('[data-filter]'),
+    );
+    let category = 'all';
+
+    const render = (save = true) => {
+      const query = search.value.trim().slice(0, 160);
+      let count = 0;
+      cards.forEach((card) => {
+        const visible =
+          (category === 'all' || card.dataset.category === category) &&
+          matches(card.dataset.search ?? '', query);
+        card.hidden = !visible;
+        if (visible) count++;
+      });
+      buttons.forEach((button) =>
+        button.setAttribute(
+          'aria-pressed',
+          String(button.dataset.filter === category),
+        ),
+      );
+      status.textContent = `${count} ${count === 1 ? 'service' : 'services'}${query ? ` matching “${query}”` : ''}`;
+      empty.hidden = count !== 0;
+      if (save) {
+        const url = new URL(window.location.href);
+        url.search = '';
+        if (query) url.searchParams.set('q', query);
+        if (category !== 'all') url.searchParams.set('category', category);
+        window.history.replaceState(null, '', url);
+      }
+    };
+    const readUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      search.value = (params.get('q') ?? '').slice(0, 160);
+      const requested = params.get('category');
+      category = buttons.some((button) => button.dataset.filter === requested)
+        ? requested!
+        : 'all';
+      render(false);
+    };
+    controls!.addEventListener('submit', (event) => {
+      event.preventDefault();
+      render();
+    });
+    search.addEventListener('input', () => render());
+    buttons.forEach((button) =>
+      button.addEventListener('click', () => {
+        category = button.dataset.filter!;
+        render();
+      }),
+    );
+    document.querySelector('#reset-search')!.addEventListener('click', () => {
+      search.value = '';
+      category = 'all';
+      render();
+      search.focus();
+    });
+    window.addEventListener('popstate', readUrl);
+    readUrl();
+    controls!.hidden = false;
+    document.querySelector<HTMLElement>('#directory-fallback')!.hidden = true;
+  } catch {
+    cards.forEach((card) => {
+      card.hidden = false;
+    });
+    if (controls) controls.hidden = true;
+    document.querySelector<HTMLElement>('#directory-error')!.hidden = false;
+  }
+</script>

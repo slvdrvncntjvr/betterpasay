@@ -1,0 +1,511 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import city from '../data/city.json';
+import { formatDate } from '../lib/content';
+const ranges = [
+  { start: 1, end: 50 },
+  { start: 51, end: 100 },
+  { start: 101, end: 150 },
+  { start: 151, end: 200 },
+  { start: 201, end: 201 },
+];
+const sourceKeys = [
+  'psgc',
+  'profile',
+  'maps',
+  'barangay201',
+  'contact',
+] as const;
+---
+
+<Base
+  title="All 201 Pasay barangays"
+  description="Search all 201 barangays of Pasay City. Find each barangay’s official PSA code and 2024 census population, plus sources for maps and city inquiries."
+>
+  <PageIntro
+    eyebrow="Barangays"
+    title="Find your neighborhood."
+    description="All 201 numbered barangays of Pasay, with their official PSA records and 2024 census populations. Search a barangay number or browse the full list."
+  />
+  <div class="container barangay-content">
+    <p class="review">
+      Sources reviewed{' '}
+      <time datetime={city.reviewedAt}>{formatDate(city.reviewedAt)}</time> ·
+      PSA list dated 31 July 2025 · <a href="#sources">View sources</a>
+    </p>
+    <section class="overview" aria-label="Understanding the barangay directory">
+      <div>
+        <p class="eyebrow">201 barangays · 20 zones · 2 local districts</p>
+        <h2>A guide to the city’s smallest communities.</h2>
+        <p>{city.barangayNotes.grouping}</p>
+        <a class="text-link" href={city.sources.maps.url}>
+          Official city & political maps <Icon name="external" size={17} />
+        </a>
+      </div>
+      <aside>
+        <h3>Looking for your barangay hall?</h3>
+        <p>{city.barangayNotes.missing}</p>
+        <p>
+          For a hall location or the right barangay contact, ask the city’s
+          Public Information Office and give your street and barangay number.
+        </p>
+        <a class="text-link" href="/contact/#city-hall">
+          Contact the city <Icon name="arrow" size={17} />
+        </a>
+      </aside>
+    </section>
+    <section id="directory" aria-labelledby="directory-title">
+      <h2 id="directory-title">Browse the barangays.</h2>
+      <div class="search-panel" data-barangay-search hidden>
+        <label for="barangay-search">Barangay number or PSA code</label>
+        <div class="search-row">
+          <Icon name="search" size={23} />
+          <input
+            id="barangay-search"
+            type="search"
+            placeholder="Try 183, Barangay 201 or a PSA code"
+            aria-describedby="search-help"
+          />
+          <button type="button" id="clear-search">
+            Clear
+          </button>
+        </div>
+        <p id="search-help">
+          A barangay number finds an exact match. You can also enter a 10-digit
+          PSA code.
+        </p>
+        <p id="result-count" role="status" aria-live="polite">
+          Showing all 201 barangays.
+        </p>
+      </div>
+      <nav class="range-nav" aria-label="Browse by barangay number">
+        {ranges.map((range) => (
+          <a href={`#range-${range.start}`}>
+            {range.start === range.end
+              ? range.start
+              : `${range.start}–${range.end}`}
+          </a>
+        ))}
+      </nav>
+      <p class="range-note">
+        Number ranges below are browsing shortcuts, not administrative zones or
+        district boundaries.{' '}
+        <a href={city.sources.psgc.url}>Source: PSA’s complete Pasay list ↗</a>
+      </p>
+      <p class="empty-state" id="no-results" hidden>
+        No barangay matches that search. Enter a number from 1 to 201, or clear
+        the search to browse all barangays.
+      </p>
+      {ranges.map((range) => (
+        <section
+          id={`range-${range.start}`}
+          class="barangay-range"
+          data-barangay-range
+        >
+          <h3>
+            {range.start === range.end
+              ? 'Barangay 201'
+              : `Barangays ${range.start}–${range.end}`}
+          </h3>
+          <div class="barangay-grid">
+            {city.barangays
+              .filter(
+                (barangay) =>
+                  barangay.number >= range.start &&
+                  barangay.number <= range.end,
+              )
+              .map((barangay) => (
+                <details
+                  id={`barangay-${barangay.number}`}
+                  class="barangay-card"
+                  data-number={barangay.number}
+                  data-psgc={barangay.psgc}
+                  data-legacy={barangay.correspondenceCode}
+                >
+                  <summary>
+                    <span>{barangay.name}</span>
+                    <span class="population">
+                      {barangay.population2024.toLocaleString('en-PH')}{' '}
+                      residents<span class="census-year">2024 POPCEN</span>
+                    </span>
+                  </summary>
+                  <div class="barangay-details">
+                    <dl>
+                      <div>
+                        <dt>PSA geographic code</dt>
+                        <dd>{barangay.psgc}</dd>
+                      </div>
+                      <div>
+                        <dt>Correspondence code</dt>
+                        <dd>{barangay.correspondenceCode}</dd>
+                      </div>
+                      <div>
+                        <dt>Hall address & direct phone</dt>
+                        <dd>Not verified in this guide</dd>
+                      </div>
+                      <div>
+                        <dt>Zone / local district</dt>
+                        <dd>
+                          {barangay.number === 201
+                            ? 'Zone 20 (Republic Act No. 11403); local district not verified here'
+                            : 'Not verified in this guide; see the official city maps'}
+                        </dd>
+                      </div>
+                    </dl>
+                    <a href={barangay.sourceUrl}>
+                      Open this barangay’s PSA record ↗
+                    </a>
+                    <a href="/contact/#city-hall">
+                      Ask the city about this barangay →
+                    </a>
+                  </div>
+                </details>
+              ))}
+          </div>
+        </section>
+      ))}
+    </section>
+    <aside class="barangay-story">
+      <p class="eyebrow">Why there is a Barangay 201</p>
+      <h2>A community recognized in law.</h2>
+      <p>
+        Republic Act No. 11403, dated 22 August 2019, provided for Barangay 201
+        in Zone 20 by separating Kalayaan Village, Teachers Bliss and Balabag
+        from Barangay 183, subject to the law’s plebiscite provisions. The PSA’s
+        reviewed list includes Barangay 201 and records{' '}
+        <strong>20,673 residents in the 2024 POPCEN</strong>.
+      </p>
+      <a class="text-link" href={city.sources.barangay201.url}>
+        Read Republic Act No. 11403 <Icon name="external" size={17} />
+      </a>
+    </aside>
+    <section id="sources" class="sources">
+      <h2>Sources & review</h2>
+      <p>
+        Reviewed {formatDate(city.reviewedAt)}. Names, codes and populations are
+        transcribed from the PSA’s Pasay table; all 201 populations total
+        453,186. PSA data attribution: Philippine Statistics Authority,{' '}
+        <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+        Per-barangay PSA pages may retain an older census year; the population
+        shown here comes from the linked citywide 2024 table.
+      </p>
+      <ul>
+        {sourceKeys.map((key) => (
+          <li>
+            <a href={city.sources[key].url}>
+              {city.sources[key].title}
+              <span>{city.sources[key].url}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const panel = document.querySelector<HTMLElement>('[data-barangay-search]');
+  const input = document.querySelector<HTMLInputElement>('#barangay-search');
+  const clear = document.querySelector<HTMLButtonElement>('#clear-search');
+  const cards = Array.from(
+    document.querySelectorAll<HTMLDetailsElement>('.barangay-card'),
+  );
+  const ranges = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-barangay-range]'),
+  );
+  const count = document.querySelector<HTMLElement>('#result-count');
+  const empty = document.querySelector<HTMLElement>('#no-results');
+  const filter = () => {
+    const query = (input?.value ?? '').trim().toLowerCase();
+    const number = query
+      .replace(/^(?:barangay|brgy\.?|bgy\.?)\s*/i, '')
+      .replace(/^0+(?=\d)/, '');
+    let visible = 0;
+    cards.forEach((card) => {
+      const matches =
+        !query ||
+        card.dataset.number === number ||
+        card.dataset.psgc === query ||
+        card.dataset.legacy === query;
+      card.hidden = !matches;
+      if (matches) visible++;
+    });
+    ranges.forEach((range) => {
+      range.hidden = !Array.from(
+        range.querySelectorAll<HTMLElement>('.barangay-card'),
+      ).some((card) => !card.hidden);
+    });
+    if (count)
+      count.textContent = query
+        ? `${visible} barangay${visible === 1 ? '' : 's'} found.`
+        : 'Showing all 201 barangays.';
+    if (empty) empty.hidden = visible > 0;
+  };
+  if (panel && input) {
+    panel.hidden = false;
+    input.addEventListener('input', filter);
+    clear?.addEventListener('click', () => {
+      input.value = '';
+      filter();
+      input.focus();
+    });
+  }
+</script>
+
+<style>
+  .barangay-content {
+    color: #142d50;
+    padding-bottom: 70px;
+  }
+  .review,
+  .range-note {
+    font-size: 0.78rem;
+    color: #53657a;
+  }
+  .overview {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 45px;
+    padding: 32px 0 50px;
+  }
+  .overview h2,
+  .barangay-content > section > h2,
+  .barangay-story h2,
+  .sources h2 {
+    font-family: var(--sans);
+    font-weight: 750;
+    letter-spacing: -0.04em;
+  }
+  .overview h2 {
+    font-size: 2.1rem;
+  }
+  .overview p:not(.eyebrow),
+  .overview aside p {
+    font-size: 0.88rem;
+    color: #53657a;
+  }
+  .eyebrow {
+    color: #596b81;
+  }
+  .overview aside {
+    border: 1px solid #dbe3ed;
+    border-top: 4px solid #eebf47;
+    border-radius: 7px;
+    padding: 25px;
+    background: #fff;
+  }
+  .overview aside h3 {
+    font-size: 1.15rem;
+  }
+  #directory-title {
+    font-family: var(--sans);
+    font-weight: 750;
+    font-size: 2.2rem;
+  }
+  .search-panel {
+    background: #edf2f8;
+    border: 1px solid #dbe3ed;
+    border-radius: 7px;
+    padding: 25px;
+    margin-top: 26px;
+  }
+  .search-panel label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .search-row {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: #fff;
+    border: 1px solid #aabbd0;
+    border-radius: 5px;
+    padding: 7px 8px 7px 16px;
+  }
+  .search-row input {
+    border: 0;
+    background: transparent;
+    color: #142d50;
+    min-width: 0;
+    flex: 1;
+    padding: 11px 0;
+    font-size: 0.88rem;
+  }
+  .search-row button {
+    border: 0;
+    border-radius: 4px;
+    background: #17375e;
+    color: #fff;
+    padding: 12px 17px;
+    min-height: 44px;
+  }
+  .search-panel p {
+    font-size: 0.76rem;
+    color: #53657a;
+    margin: 10px 0 0;
+  }
+  .search-panel #result-count {
+    font-weight: 700;
+    color: #142d50;
+  }
+  .range-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 24px 0 10px;
+  }
+  .range-nav a {
+    border: 1px solid #dbe3ed;
+    border-radius: 4px;
+    background: #fff;
+    padding: 9px 17px;
+    min-height: 44px;
+    font-size: 0.85rem;
+    font-weight: 650;
+  }
+  .barangay-range {
+    padding-top: 24px;
+    scroll-margin-top: 30px;
+  }
+  .barangay-range > h3 {
+    font-size: 1.1rem;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e7be50;
+  }
+  .barangay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 11px;
+  }
+  .barangay-card {
+    border: 1px solid #dbe3ed;
+    border-radius: 5px;
+    background: #fff;
+    align-self: start;
+    scroll-margin-top: 30px;
+  }
+  .barangay-card summary {
+    padding: 17px 16px;
+    cursor: pointer;
+    font-weight: 650;
+    font-size: 0.87rem;
+  }
+  .barangay-card summary > span:first-child {
+    margin-left: 3px;
+  }
+  .population {
+    display: block;
+    padding-left: 18px;
+    font-size: 0.75rem;
+    color: #53657a;
+    font-weight: 400;
+    margin-top: 6px;
+  }
+  .census-year {
+    font-size: 0.65rem;
+    display: block;
+  }
+  .barangay-card[open] {
+    border-color: #a9bbd0;
+    background: #f8fafe;
+  }
+  .barangay-details {
+    border-top: 1px solid #dbe3ed;
+    padding: 15px 18px;
+  }
+  .barangay-details dl {
+    font-size: 0.74rem;
+    margin: 0 0 17px;
+  }
+  .barangay-details dl > div {
+    margin-bottom: 12px;
+  }
+  .barangay-details dt {
+    font-weight: 700;
+  }
+  .barangay-details dd {
+    margin: 3px 0 0;
+    color: #53657a;
+    overflow-wrap: anywhere;
+  }
+  .barangay-details > a {
+    display: block;
+    font-size: 0.73rem;
+    margin-top: 13px;
+  }
+  .empty-state {
+    padding: 25px;
+    background: #fff5d8;
+    border-radius: 5px;
+  }
+  .barangay-story {
+    background: #fff5d8;
+    border-radius: 7px;
+    padding: 32px;
+    margin: 48px 0;
+  }
+  .barangay-story h2 {
+    font-size: 1.8rem;
+  }
+  .barangay-story p {
+    font-size: 0.88rem;
+    max-width: 900px;
+  }
+  .sources {
+    border-top: 1px solid #dbe3ed;
+    padding-top: 30px;
+    font-size: 0.8rem;
+    color: #53657a;
+  }
+  .sources h2 {
+    font-size: 1.5rem;
+    color: #142d50;
+  }
+  .sources ul {
+    padding-left: 20px;
+  }
+  .sources li {
+    margin-bottom: 12px;
+  }
+  .sources a span {
+    display: block;
+    font-size: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 850px) {
+    .overview {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+    .barangay-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 520px) {
+    .barangay-grid {
+      grid-template-columns: 1fr;
+    }
+    .search-panel {
+      padding: 17px;
+    }
+    .search-row {
+      gap: 8px;
+    }
+    .search-row input {
+      font-size: 0.8rem;
+    }
+    .search-row button {
+      padding: 10px;
+    }
+    .barangay-story {
+      padding: 24px;
+    }
+    .overview {
+      padding-top: 22px;
+    }
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+import Icon from './Icon.astro';
+import {
+  categories,
+  sourceFor,
+  formatDate,
+  type Service,
+} from '../lib/content';
+interface Props {
+  service: Service;
+  filterable?: boolean;
+}
+const { service, filterable = false } = Astro.props;
+const category = categories.find((item) => item.id === service.category)!;
+const source = sourceFor(service.sourceId);
+const searchText = [
+  service.title,
+  service.filipino,
+  service.description,
+  service.office,
+  ...service.keywords,
+].join(' ');
+---
+
+<article
+  class="service-card"
+  data-service={filterable ? service.id : undefined}
+  data-category={service.category}
+  data-search={filterable ? searchText : undefined}
+>
+  <div class="card-top">
+    <span class="icon-box">
+      <Icon name={category.icon} />
+    </span>
+    <span class="eyebrow">{category.short}</span>
+  </div>
+  <h3>
+    <a href={`/services/${service.id}/`}>{service.title}</a>
+  </h3>
+  <p class="filipino" lang="fil">
+    {service.filipino}
+  </p>
+  <p>{service.description}</p>
+  <div class="card-bottom">
+    <span class="small">
+      Source checked
+      <br />
+      <time datetime={source.checkedAt}>{formatDate(source.checkedAt)}</time>
+    </span>
+    <a
+      class="round-link"
+      href={`/services/${service.id}/`}
+      aria-label={`View ${service.title}`}
+    >
+      <Icon name="arrow" size={20} />
+    </a>
+  </div>
+</article>

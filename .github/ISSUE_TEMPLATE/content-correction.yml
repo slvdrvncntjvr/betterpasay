@@ -1,0 +1,31 @@
+name: Content correction or source suggestion
+description: Help improve a service guide or public resource. Do not include personal information.
+title: 'Content correction: '
+body:
+  - type: markdown
+    attributes:
+      value: 'This is a public community repository, not a government service desk. Do not include identification documents, private contacts, medical information or application records.'
+  - type: input
+    id: page
+    attributes:
+      label: Page or service
+      description: Which Better Pasay page needs a change?
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+      description: Explain what should change and why.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official public source URL
+      description: Link to the original government page or document, if available.
+  - type: input
+    id: checked
+    attributes:
+      label: Date checked
+      placeholder: YYYY-MM-DD

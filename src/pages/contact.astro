@@ -1,0 +1,496 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import city from '../data/city.json';
+import { formatDate } from '../lib/content';
+const sourceFor = (key: string) =>
+  city.sources[key as keyof typeof city.sources];
+const sourceKeys = [
+  'nationalEmergency',
+  'hotlines',
+  'drrmoAdvisory',
+  'contact',
+  'internal',
+  'external',
+  'tourism',
+] as const;
+const emergencies = city.emergency.filter((contact) => contact.primary);
+const otherContacts = city.emergency.filter((contact) => !contact.primary);
+---
+
+<Base
+  title="Pasay contacts & emergency hotlines"
+  description="Verified published Pasay emergency numbers, City Hall address, Public Information Office email, inquiry hours and links to official city departments."
+>
+  <PageIntro
+    eyebrow="Contact & help"
+    title="The right contact, close at hand."
+    description="Call for emergency assistance, ask City Hall a question or find the department that handles your concern. Numbers below come from government sources."
+  />
+  <div class="container contact-content">
+    <p class="review">
+      Sources reviewed{' '}
+      <time datetime={city.reviewedAt}>{formatDate(city.reviewedAt)}</time> ·
+      Published numbers checked against linked pages; no test calls made ·{' '}
+      <a href="#sources">View sources</a>
+    </p>
+    <nav class="page-links" aria-label="On this page">
+      <a href="#emergency">Emergency contacts</a>
+      <a href="#city-hall">City Hall & inquiries</a>
+      <a href="#other-contacts">Other local numbers</a>
+    </nav>
+    <section
+      id="emergency"
+      class="content-section"
+      aria-labelledby="emergency-heading"
+    >
+      <div class="emergency-heading">
+        <div>
+          <p class="eyebrow">Need immediate help?</p>
+          <h2 id="emergency-heading">Emergency contacts.</h2>
+          <p>
+            Tell the responder what happened, your exact location and a nearby
+            landmark.
+          </p>
+        </div>
+        <a class="emergency-call" href="tel:911">
+          <span>Unified emergency hotline</span>
+          <strong>911</strong>
+          <span>Tap to call</span>
+        </a>
+      </div>
+      <div class="contact-grid">
+        {emergencies.map((contact) => (
+          <article>
+            <p class="agency">{contact.agency}</p>
+            <h3>{contact.name}</h3>
+            <div class="phone-list">
+              {contact.numbers.map((number) => (
+                <a class="phone" href={`tel:${number.tel}`}>
+                  {number.display}
+                  <Icon name="arrow" size={17} />
+                </a>
+              ))}
+            </div>
+            <a class="source-link" href={sourceFor(contact.source).url}>
+              {sourceFor(contact.source).title} ↗
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section id="city-hall" class="content-section">
+      <p class="eyebrow">General inquiries</p>
+      <h2>Get in touch with City Hall.</h2>
+      <div class="city-hall-grid">
+        <article class="city-hall-card">
+          <Icon name="building" size={33} />
+          <h3>Public Information Office</h3>
+          <p class="address">
+            {city.cityHall.inquiryRoom}
+            <br />
+            {city.cityHall.address}
+          </p>
+          <dl>
+            <div>
+              <dt>Phone</dt>
+              <dd>
+                <a href="tel:+63288872729">(02) 8887 2729</a>, extension{' '}
+                {city.cityHall.extension}
+              </dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a href={`mailto:${city.cityHall.email}`}>
+                  {city.cityHall.email}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>Published inquiry hours</dt>
+              <dd>{city.cityHall.publishedHours}</dd>
+            </div>
+          </dl>
+          <p class="source-note">
+            The city’s contact page publishes these hours without specifying
+            days. Its internal directory lists PIO extension 1284 as another
+            contact.
+          </p>
+          <a class="text-link" href={city.sources.contact.url}>
+            Official contact page & feedback form{' '}
+            <Icon name="external" size={17} />
+          </a>
+        </article>
+        <div class="inquiry-guide">
+          <h3>Make your inquiry easier to route.</h3>
+          <ol>
+            <li>Give the name of the office or the service you need.</li>
+            <li>
+              For neighborhood concerns, include your street and barangay
+              number.
+            </li>
+            <li>
+              For an existing transaction, keep its reference number ready.
+            </li>
+          </ol>
+          <p>
+            For office-specific room numbers and extensions, use the{' '}
+            <a href="/government/#offices">government directory</a>. The city’s
+            official contact page accepts feedback, concerns, complaints and
+            suggestions.
+          </p>
+          <div class="quick-links">
+            <a href="/government/">
+              Find a city office <Icon name="arrow" size={17} />
+            </a>
+            <a href="/barangays/">
+              Find a barangay <Icon name="arrow" size={17} />
+            </a>
+            <a href="/services/">
+              Explore public services <Icon name="arrow" size={17} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="other-contacts" class="content-section">
+      <p class="eyebrow">Local contacts</p>
+      <h2>Hospital, traffic & additional help.</h2>
+      <div class="contact-grid other-contacts">
+        {otherContacts.map((contact) => (
+          <article>
+            <p class="agency">{contact.agency}</p>
+            <h3>{contact.name}</h3>
+            <div class="phone-list">
+              {contact.numbers.map((number) => (
+                <a class="phone" href={`tel:${number.tel}`}>
+                  {number.display}
+                  <Icon name="arrow" size={16} />
+                </a>
+              ))}
+            </div>
+            <a class="source-link" href={sourceFor(contact.source).url}>
+              {sourceFor(contact.source).title} ↗
+            </a>
+          </article>
+        ))}
+      </div>
+      <p class="listing-note">
+        The city homepage and the 27 April 2026 advisory publish different DRRMO
+        contact sets; both are shown with their own source. The hospital’s
+        department-directory listing also publishes{' '}
+        <a href="tel:+63288330622">(02) 8833 0622</a> (
+        <a href={city.sources.external.url}>official department directory</a>).
+      </p>
+    </section>
+    <aside class="tourism-contact">
+      <div>
+        <p class="eyebrow">Visitor information</p>
+        <h2>Planning a visit to Pasay?</h2>
+        <p>
+          The city tourism page publishes{' '}
+          <a href="tel:+63288872729">(02) 8887 2729</a>, local 1451, and{' '}
+          <a href="mailto:ptcdo.feedback@pasay.gov.ph">
+            ptcdo.feedback@pasay.gov.ph
+          </a>
+          .
+        </p>
+      </div>
+      <a class="text-link" href={city.sources.tourism.url}>
+        Official tourism information <Icon name="external" size={18} />
+      </a>
+    </aside>
+    <section id="sources" class="sources">
+      <h2>Sources & review</h2>
+      <p>
+        Reviewed {formatDate(city.reviewedAt)}. The city publishes its trunkline
+        as “888-72729” or “88872729”; this guide groups the same eight digits as
+        “8887 2729” and adds Metro Manila’s 02 area code for dialing. Mobile
+        numbers retain their published digits.
+      </p>
+      <ul>
+        {sourceKeys.map((key) => (
+          <li>
+            <a href={city.sources[key].url}>
+              {city.sources[key].title}
+              <span>{city.sources[key].url}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .contact-content {
+    color: #142d50;
+    padding-bottom: 70px;
+  }
+  .review {
+    font-size: 0.76rem;
+    color: #53657a;
+  }
+  .page-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px 28px;
+    padding: 14px 0 25px;
+    font-size: 0.87rem;
+  }
+  .content-section {
+    padding: 40px 0 50px;
+    border-top: 1px solid #dbe3ed;
+  }
+  .content-section h2,
+  .tourism-contact h2,
+  .sources h2 {
+    font-family: var(--sans);
+    font-weight: 750;
+    letter-spacing: -0.04em;
+  }
+  .eyebrow {
+    color: #596b81;
+  }
+  .emergency-heading {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 35px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .emergency-heading > div > p:last-child {
+    color: #53657a;
+    font-size: 0.9rem;
+  }
+  .emergency-call {
+    display: block;
+    text-align: center;
+    background: #142f53;
+    color: #fff;
+    border-radius: 8px;
+    border-top: 5px solid #f1c54b;
+    text-decoration: none;
+    padding: 20px;
+  }
+  .emergency-call strong {
+    display: block;
+    font-size: 3.9rem;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    color: #ffcf55;
+  }
+  .emergency-call span {
+    font-size: 0.76rem;
+  }
+  .emergency-call:hover {
+    background: #204775;
+    color: #fff;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .contact-grid article {
+    padding: 26px;
+    background: #fff;
+    border: 1px solid #dbe3ed;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .agency {
+    font-size: 0.74rem;
+    color: #53657a;
+    margin-bottom: 12px;
+  }
+  .contact-grid h3 {
+    font-size: 1.14rem;
+    margin-bottom: 20px;
+  }
+  .phone-list {
+    width: 100%;
+    margin-top: auto;
+  }
+  .phone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.15rem;
+    font-weight: 750;
+    padding: 10px 0;
+    min-height: 44px;
+    color: #163c6a;
+  }
+  .source-link {
+    display: block;
+    font-size: 0.71rem;
+    color: #53657a;
+    margin-top: 18px;
+  }
+  .city-hall-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    margin-top: 28px;
+  }
+  .city-hall-card {
+    padding: 30px;
+    border: 1px solid #dbe3ed;
+    background: #f3f6fa;
+    border-radius: 7px;
+  }
+  .city-hall-card > svg {
+    margin-bottom: 20px;
+  }
+  .city-hall-card h3 {
+    font-size: 1.3rem;
+  }
+  .address {
+    font-size: 0.9rem;
+    color: #53657a;
+    line-height: 1.8;
+  }
+  .city-hall-card dl {
+    font-size: 0.85rem;
+  }
+  .city-hall-card dl > div {
+    padding: 13px 0;
+    border-top: 1px solid #dbe3ed;
+  }
+  .city-hall-card dt {
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .city-hall-card dd {
+    margin: 0;
+    color: #53657a;
+    overflow-wrap: anywhere;
+  }
+  .source-note {
+    font-size: 0.75rem;
+    color: #53657a;
+  }
+  .city-hall-card .text-link {
+    font-size: 0.77rem;
+  }
+  .inquiry-guide {
+    padding-top: 12px;
+  }
+  .inquiry-guide ol {
+    padding-left: 22px;
+    font-size: 0.9rem;
+    color: #53657a;
+  }
+  .inquiry-guide li {
+    margin: 18px 0;
+    padding-left: 8px;
+  }
+  .inquiry-guide > p {
+    font-size: 0.88rem;
+    color: #53657a;
+  }
+  .quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .quick-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid #dbe3ed;
+    padding: 10px 0;
+    font-size: 0.88rem;
+    font-weight: 650;
+  }
+  .other-contacts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 28px;
+  }
+  .listing-note {
+    font-size: 0.78rem;
+    color: #53657a;
+    margin-top: 22px;
+  }
+  .tourism-contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    background: #fff5d8;
+    border-radius: 7px;
+    margin-bottom: 45px;
+  }
+  .tourism-contact h2 {
+    font-size: 1.7rem;
+  }
+  .tourism-contact p {
+    font-size: 0.87rem;
+    max-width: 650px;
+  }
+  .tourism-contact > a {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+  }
+  .sources {
+    border-top: 1px solid #dbe3ed;
+    padding-top: 30px;
+    font-size: 0.8rem;
+    color: #53657a;
+  }
+  .sources h2 {
+    font-size: 1.5rem;
+    color: #142d50;
+  }
+  .sources ul {
+    padding-left: 20px;
+  }
+  .sources li {
+    margin-bottom: 12px;
+  }
+  .sources a span {
+    display: block;
+    font-size: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 850px) {
+    .city-hall-grid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+    .other-contacts {
+      grid-template-columns: 1fr;
+    }
+    .tourism-contact {
+      display: block;
+    }
+    .tourism-contact > a {
+      margin-top: 12px;
+    }
+    .emergency-heading {
+      grid-template-columns: 1fr 210px;
+    }
+  }
+  @media (max-width: 520px) {
+    .emergency-heading,
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .city-hall-card,
+    .tourism-contact {
+      padding: 24px;
+    }
+    .content-section {
+      padding-block: 30px;
+    }
+  }
+</style>

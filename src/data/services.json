@@ -1,0 +1,500 @@
+[
+  {
+    "id": "senior-citizen-id",
+    "title": "Senior citizen ID & purchase booklet",
+    "filipino": "Kard para sa senior citizen",
+    "category": "family",
+    "description": "Find the city’s application guide for a senior citizen identification card and purchase booklet.",
+    "office": "Office of the Senior Citizen’s Affairs (OSCA)",
+    "sourceId": "senior",
+    "keywords": ["osca", "senior", "elderly", "identification", "booklet"],
+    "action": "Read the official guide"
+  },
+  {
+    "id": "community-tax",
+    "title": "Community tax certificate (cedula)",
+    "filipino": "Sedula",
+    "category": "documents",
+    "description": "Read the Treasurer’s guide to the community tax certificate. Check the original document for the applicable computation.",
+    "office": "City Treasurer’s Office",
+    "sourceId": "cedula",
+    "keywords": ["ctc", "sedula", "cedula", "tax", "certificate"],
+    "action": "Read the official guide",
+    "requirements": [
+      "Completed community tax certificate form from the City Treasurer’s Office.",
+      "One original government-issued ID."
+    ],
+    "steps": [
+      "Submit the completed CTC form to the assigned teller at the Treasurer’s payment counter.",
+      "Pay the assessed amount and collect the community tax certificate."
+    ],
+    "scope": "The undated guide lists applicants aged 18 and above. Its filename says internal service although its text includes citizen transactions; confirm applicability with the Treasurer. The upload folder does not establish a publication year."
+  },
+  {
+    "id": "mayors-clearance",
+    "title": "Mayor’s clearance",
+    "filipino": "Mayor’s clearance",
+    "category": "documents",
+    "description": "See the city’s clearance guide, including its separate checklists for different application purposes.",
+    "office": "City Administrator’s Office",
+    "sourceId": "clearance",
+    "keywords": ["employment", "clearance", "mayor", "certificate"],
+    "action": "Read the official guide",
+    "requirements": [
+      "Fiscal’s clearance from the City Prosecutor’s Office (1 original).",
+      "Police clearance from PNP Pasay (1 original).",
+      "Community tax certificate (1 photocopy).",
+      "Police or military service applicants: Regional Trial Court clearance (1 original).",
+      "Firearm-license applicants: barangay clearance (1 original)."
+    ],
+    "steps": [
+      "Submit the complete documents to the City Administrator’s receiving section.",
+      "Wait for preparation and approval, then claim the clearance at the receiving section."
+    ],
+    "scope": "The undated official guide covers Pasay residents aged 18 or older applying for employment or firearm licensing. Follow the checklist for your purpose; its publication year is not stated."
+  },
+  {
+    "id": "business-permit",
+    "title": "Business permit online services",
+    "filipino": "Permiso sa negosyo",
+    "category": "business",
+    "description": "Start at the city’s service page for its official business permit system, BPLTAS.",
+    "office": "Pasay City Government · online services",
+    "sourceId": "online-services",
+    "keywords": ["bpltas", "business", "permit", "negosyo", "renewal"],
+    "action": "Find the official portal"
+  },
+  {
+    "id": "building-permit",
+    "title": "Building permit application",
+    "filipino": "Building permit",
+    "category": "business",
+    "description": "Review the city’s building permit guide before planning an application. Requirements depend on the proposed work.",
+    "office": "City Engineer’s Office / Office of the Building Official",
+    "sourceId": "building",
+    "keywords": [
+      "construction",
+      "building",
+      "obo",
+      "renovation",
+      "permit",
+      "bahay"
+    ],
+    "action": "Read the official guide"
+  },
+  {
+    "id": "real-property-tax",
+    "title": "Real property tax (amilyar)",
+    "filipino": "Pagbabayad ng amilyar",
+    "category": "business",
+    "description": "Find the city’s payment guide for real property taxes. Confirm your assessment and amount due with the city.",
+    "office": "City Treasurer’s Office · Real Property Tax Division",
+    "sourceId": "property-tax",
+    "keywords": [
+      "rpt",
+      "amilyar",
+      "amilyar",
+      "property",
+      "land",
+      "tax",
+      "lupa"
+    ],
+    "action": "Read the official guide"
+  },
+  {
+    "id": "cremation-services",
+    "title": "Cremation services",
+    "filipino": "Serbisyong kremasyon",
+    "category": "family",
+    "description": "Read the city crematorium’s guide to requesting a schedule, required documents and applicable charges.",
+    "office": "Pasay Public Cemetery & Crematorium",
+    "sourceId": "cremation",
+    "keywords": ["burial", "cremation", "kremasyon", "cemetery", "funeral"],
+    "action": "Read the official guide"
+  },
+  {
+    "id": "job-openings",
+    "title": "Job openings",
+    "filipino": "Mga bakanteng trabaho",
+    "category": "work",
+    "description": "Browse the city’s listings for PESO and city government vacancies. Check each listing for its current status.",
+    "office": "Pasay City Government · job listings",
+    "sourceId": "jobs",
+    "keywords": [
+      "peso",
+      "job",
+      "jobs",
+      "employment",
+      "trabaho",
+      "hiring",
+      "career"
+    ],
+    "action": "Browse official job listings"
+  },
+  {
+    "id": "peso",
+    "title": "Employment & livelihood information",
+    "filipino": "Trabaho at kabuhayan",
+    "category": "work",
+    "description": "Visit PESO’s official page for employment information and announcements. Programme availability may change.",
+    "office": "Public Employment Service Office (PESO)",
+    "sourceId": "peso",
+    "keywords": [
+      "peso",
+      "training",
+      "livelihood",
+      "kabuhayan",
+      "work",
+      "skills"
+    ],
+    "action": "Visit the PESO page"
+  },
+  {
+    "id": "procurement-forms",
+    "title": "Procurement forms",
+    "filipino": "Mga pormularyo sa bidding",
+    "category": "business",
+    "description": "Find the city’s published procurement forms for goods, services and infrastructure bidding.",
+    "office": "Pasay City Government · downloadable forms",
+    "sourceId": "forms",
+    "keywords": ["bidding", "procurement", "supplier", "forms", "download"],
+    "action": "Browse official forms"
+  },
+  {
+    "id": "city-inquiries",
+    "title": "Contact the city",
+    "filipino": "Makipag-ugnayan sa lungsod",
+    "category": "inquiries",
+    "description": "Use the official city contact page for government inquiries or concerns. Better Pasay cannot process service requests.",
+    "office": "Pasay City Government · contact page",
+    "sourceId": "contact",
+    "keywords": [
+      "contact",
+      "office",
+      "inquiry",
+      "feedback",
+      "concern",
+      "tulong"
+    ],
+    "action": "Open the city contact page"
+  },
+  {
+    "id": "birth-certificate",
+    "title": "Birth certificate — local certified copy",
+    "filipino": "Kopya ng sertipiko ng kapanganakan",
+    "category": "documents",
+    "description": "Request a certified copy of a birth record registered in Pasay. This guide covers the local civil registry copy; check the receiving agency’s required document format.",
+    "office": "Local Civil Registry Office (LCRO)",
+    "sourceId": "charter-birth-certificate",
+    "keywords": [
+      "birth certificate",
+      "Kopya ng sertipiko ng kapanganakan",
+      "Local Civil Registry Office (LCRO)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Photocopy of the requested registered document (1 copy). Ask LCRO how to proceed if you have no existing copy.",
+      "Government-issued ID: 1 original and 1 photocopy.",
+      "If represented: handwritten authorization (1 original), document owner’s ID (original and photocopy), representative’s ID (original), and requested document photocopy.",
+      "For a deceased document owner: affidavit of kinship (1 original) and proof of kinship (original and photocopy). Confirm who may request the record with LCRO."
+    ],
+    "steps": [
+      "Complete the request slip and submit it at the LCRO verification window for a record search and order of payment.",
+      "Pay the assessed fees at the City Treasurer’s Office and keep the official receipt.",
+      "Present the receipt at the LCRO releasing window.",
+      "Claim the document and sign the logbook."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "524–526",
+    "fee": "2026 charter: PHP 120 for a certified true copy or certification of no record; PHP 170 for a certified transcribed copy (Municipal Form 1A). Confirm the applicable document and assessed amount.",
+    "timing": "2026 charter service standard: 43 minutes, after complete requirements; this is not a guaranteed visit duration.",
+    "scope": "For records registered in Pasay. Registration, correction and PSA-issued copies are separate transactions; this page does not provide a PSA ordering service."
+  },
+  {
+    "id": "marriage-certificate",
+    "title": "Marriage certificate — local certified copy",
+    "filipino": "Kopya ng sertipiko ng kasal",
+    "category": "documents",
+    "description": "Request a certified copy of a marriage record registered in Pasay. This guide covers the local civil registry copy; check the receiving agency’s required document format.",
+    "office": "Local Civil Registry Office (LCRO)",
+    "sourceId": "charter-marriage-certificate",
+    "keywords": [
+      "marriage certificate",
+      "Kopya ng sertipiko ng kasal",
+      "Local Civil Registry Office (LCRO)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Photocopy of the requested registered document (1 copy). Ask LCRO how to proceed if you have no existing copy.",
+      "Government-issued ID: 1 original and 1 photocopy.",
+      "If represented: handwritten authorization (1 original), document owner’s ID (original and photocopy), representative’s ID (original), and requested document photocopy.",
+      "For a deceased document owner: affidavit of kinship (1 original) and proof of kinship (original and photocopy). Confirm who may request the record with LCRO."
+    ],
+    "steps": [
+      "Complete the request slip and submit it at the LCRO verification window for a record search and order of payment.",
+      "Pay the assessed fees at the City Treasurer’s Office and keep the official receipt.",
+      "Present the receipt at the LCRO releasing window.",
+      "Claim the document and sign the logbook."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "524–526",
+    "fee": "2026 charter: PHP 120 for a certified true copy or certification of no record; PHP 170 for a certified transcribed copy (Municipal Form 1A). Confirm the applicable document and assessed amount.",
+    "timing": "2026 charter service standard: 43 minutes, after complete requirements; this is not a guaranteed visit duration.",
+    "scope": "For records registered in Pasay. Registration, correction and PSA-issued copies are separate transactions; this page does not provide a PSA ordering service."
+  },
+  {
+    "id": "death-certificate",
+    "title": "Death certificate — local certified copy",
+    "filipino": "Kopya ng sertipiko ng pagkamatay",
+    "category": "documents",
+    "description": "Request a certified copy of a death record registered in Pasay. This guide covers the local civil registry copy; check the receiving agency’s required document format.",
+    "office": "Local Civil Registry Office (LCRO)",
+    "sourceId": "charter-death-certificate",
+    "keywords": [
+      "death certificate",
+      "Kopya ng sertipiko ng pagkamatay",
+      "Local Civil Registry Office (LCRO)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Photocopy of the requested registered document (1 copy). Ask LCRO how to proceed if you have no existing copy.",
+      "Government-issued ID: 1 original and 1 photocopy.",
+      "If represented: handwritten authorization (1 original), document owner’s ID (original and photocopy), representative’s ID (original), and requested document photocopy.",
+      "For a deceased document owner: affidavit of kinship (1 original) and proof of kinship (original and photocopy). Confirm who may request the record with LCRO."
+    ],
+    "steps": [
+      "Complete the request slip and submit it at the LCRO verification window for a record search and order of payment.",
+      "Pay the assessed fees at the City Treasurer’s Office and keep the official receipt.",
+      "Present the receipt at the LCRO releasing window.",
+      "Claim the document and sign the logbook."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "524–526",
+    "fee": "2026 charter: PHP 120 for a certified true copy or certification of no record; PHP 170 for a certified transcribed copy (Municipal Form 1A). Confirm the applicable document and assessed amount.",
+    "timing": "2026 charter service standard: 43 minutes, after complete requirements; this is not a guaranteed visit duration.",
+    "scope": "For records registered in Pasay. Registration, correction and PSA-issued copies are separate transactions; this page does not provide a PSA ordering service."
+  },
+  {
+    "id": "pwd-id",
+    "title": "PWD ID & purchase booklet — new application",
+    "filipino": "Kard at booklet para sa PWD",
+    "category": "family",
+    "description": "Prepare for a new PWD ID and purchase booklet application. The charter has different checklists for personal applications and representatives.",
+    "office": "Persons with Disability Affairs Office (PDAO)",
+    "sourceId": "charter-pwd-id",
+    "keywords": [
+      "pwd id",
+      "Kard at booklet para sa PWD",
+      "Persons with Disability Affairs Office (PDAO)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Completed PDAO application form.",
+      "Updated disability medical certificate showing disability type, signed by the doctor with license number (1 photocopy), plus updated medical abstract (1 photocopy). The charter specifies different certifying sources for apparent and non-apparent disabilities.",
+      "Barangay residency certificate (1 original), or original utility bill showing the applicant’s current/permanent address when the certificate is unavailable.",
+      "Two recent colored 1×1 photos with white background.",
+      "Government-issued ID (original and photocopy), or original birth certificate if no government ID is available.",
+      "Apparent disability: a colored whole-body photo focusing on the disability.",
+      "Representative applications add an original authorization letter, representative’s ID (original and photocopy), one 2×2 white-background photo, three signatures in black ink or thumbmarks on bond paper, and a colored whole-body photo of applicant with representative. Read pp. 168–169 for the complete separate checklist."
+    ],
+    "steps": [
+      "Submit the form and complete requirements to the PDAO transaction window. The 2026 charter names Unit 12, Mayor’s Coordinating Office, Cuneta Astrodome; confirm the location before visiting.",
+      "Wait while PDAO verifies the documents and prepares the ID and booklet.",
+      "Claim the ID and purchase booklet at the PDAO window."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "167–170",
+    "fee": "2026 charter: no service fee.",
+    "timing": "2026 charter service standard for a new application: 40 minutes; actual waiting time may differ.",
+    "scope": "For persons with disability residing in Pasay. Medical evidence depends on disability type; ask PDAO which certification applies to your case."
+  },
+  {
+    "id": "pwd-id-renewal",
+    "title": "PWD ID & booklet renewal",
+    "filipino": "Pag-renew ng PWD ID",
+    "category": "family",
+    "description": "Renew a Pasay-issued PWD ID and booklet using the renewal checklist, rather than the new-application checklist.",
+    "office": "Persons with Disability Affairs Office (PDAO)",
+    "sourceId": "charter-pwd-id-renewal",
+    "keywords": [
+      "pwd id renewal",
+      "Pag-renew ng PWD ID",
+      "Persons with Disability Affairs Office (PDAO)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "For a personal renewal: completed PDAO application form, old PWD ID issued by Pasay PDAO, and one recent colored 1×1 photo with white background.",
+      "If applying through a representative, use the separate pp. 170–171 checklist: original authorization letter and application form; 1×1 and 2×2 white-background photos; three specimen signatures or thumbmarks; whole-body photo with representative; applicant ID (original and photocopy) or original birth certificate alternative; and representative ID (original and photocopy)."
+    ],
+    "steps": [
+      "Submit the renewal application and applicable documents to PDAO. Confirm the current office location before visiting.",
+      "Wait for verification and preparation of the replacement ID and booklet.",
+      "Claim the renewed ID and booklet at the PDAO transaction window."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "170–172",
+    "fee": "2026 charter: no service fee.",
+    "timing": "2026 charter renewal standard: 20 minutes; actual waiting time may differ.",
+    "scope": "This guide covers renewal. Lost-card replacement has a separate checklist on pp. 172–173, including an affidavit of loss."
+  },
+  {
+    "id": "solo-parent-id",
+    "title": "Solo parent ID",
+    "filipino": "Kard para sa solong magulang",
+    "category": "family",
+    "description": "Find the city’s solo parent ID checklist and social-worker assessment process. Eligibility is assessed by PSWDD for your circumstances.",
+    "office": "Pasay Social Welfare and Development Department (PSWDD)",
+    "sourceId": "charter-solo-parent-id",
+    "keywords": [
+      "solo parent id",
+      "Kard para sa solong magulang",
+      "Pasay Social Welfare and Development Department (PSWDD)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Barangay certificate confirming solo parent status (1 original and 1 photocopy).",
+      "Minor children’s birth certificates (the charter lists 1 certified true copy and 1 original). Confirm the required copy format with PSWDD.",
+      "Government-issued ID (original and photocopy).",
+      "Recent 1×1 photo: 2 originals and 2 photocopies.",
+      "Case-specific evidence on p. 581: detention certificate for a detained spouse; court decision for legal separation/annulment; medical certificate or psychological evaluation for an incapacitated spouse; or solo parent affidavit for an unmarried/not legally separated applicant. Use the checklist applicable to your situation."
+    ],
+    "steps": [
+      "Visit the PSWDD unit responsible for your residence and register in the client logbook.",
+      "Submit the documents and attend the intake interview.",
+      "Expect a social-worker home visit and interview, followed by assessment and ID preparation.",
+      "When advised that the card is released, claim it at the PSWDD unit and sign the duplicate copy."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "579–587",
+    "fee": "2026 charter: no service fee.",
+    "timing": "2026 charter total: 11 days, 3 hours and 19 minutes, including assessment and waiting time; confirm the current release schedule.",
+    "scope": "This is the city’s 2026 service checklist, not a complete statement of legal eligibility or benefits. Ask PSWDD to assess your circumstances and current documentation."
+  },
+  {
+    "id": "health-certificate",
+    "title": "Work health certificate — new application",
+    "filipino": "Health certificate para sa trabaho",
+    "category": "work",
+    "description": "Prepare for a City Health Office certificate for employees of business establishments operating in Pasay. This is an administrative service guide, not medical advice.",
+    "office": "City Health Office (CHO) · Environmental Sanitation Services",
+    "sourceId": "charter-health-certificate",
+    "keywords": [
+      "health certificate",
+      "Health certificate para sa trabaho",
+      "City Health Office (CHO) · Environmental Sanitation Services"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Completed original work permit form from BPLO.",
+      "Original chest X-ray result, within 3 months of examination, from a DOH-accredited hospital or clinic.",
+      "One recent original colored 1×1 photo.",
+      "Food handlers only: original dental certificate from a DOH-accredited dental clinic.",
+      "Pink card holders only: original venereal disease examination from Dr. Lagrosa Health Center, as specified in the 2026 checklist."
+    ],
+    "steps": [
+      "Submit the requirements to Environmental Sanitation Services. The charter names Room 106, Pasay City Hall; confirm the current location.",
+      "Pay the assessed fees at the City Treasurer’s Office and retain the official receipt.",
+      "Attend the HIV/AIDS orientation, then present original laboratory results and receipt to CHO for a claim stub.",
+      "Return on the date and time on the claim stub to collect the approved certificate and original documents."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "120–125",
+    "fee": "The 2026 schedule varies by worker type and lists laboratory, orientation and computerization charges. A single applicable total is not verified here; ask CHO for your assessment.",
+    "timing": "The charter says morning applications may be released the same day and afternoon applications the following day. Its total processing-time figure does not match the listed step durations, so no minute estimate is reproduced.",
+    "scope": "New applications only. Renewal has a separate charter section starting p. 143. Laboratory and orientation requirements should be confirmed with CHO before arranging tests."
+  },
+  {
+    "id": "marriage-license",
+    "title": "Marriage license application",
+    "filipino": "Aplikasyon para sa marriage license",
+    "category": "family",
+    "description": "Review the application process and the separate checklists by age, nationality and civil status before visiting the local civil registry.",
+    "office": "Local Civil Registry Office (LCRO)",
+    "sourceId": "charter-marriage-license",
+    "keywords": [
+      "marriage license",
+      "Aplikasyon para sa marriage license",
+      "Local Civil Registry Office (LCRO)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Both applicants appear personally. Mandatory items include original pre-marriage orientation certificate from CHO, government IDs (original and photocopy), and one passport-sized or 2×2 photo per applicant.",
+      "The charter’s age-based checklists include CENOMAR and birth certificates (original and photocopy), plus residency evidence where listed.",
+      "Ages 18–20: parental consent, consenting parent’s ID and pre-marriage counseling certificate; ages 21–24: parental advice and counseling requirements. Read pp. 546–547 for copy counts and appearance requirements.",
+      "Non-Filipino, widowed, annulled or divorced applicants have separate documentary requirements on p. 547. Ask LCRO to identify your complete applicable checklist."
+    ],
+    "steps": [
+      "Present the applicable requirements to LCRO for checking and obtain the marriage license application forms.",
+      "Complete the forms in black ink, have them notarized, and return them with the supporting documents.",
+      "Pay the assessed application, form and computerization fees at the Treasurer; present the receipt to LCRO and obtain the claim stub.",
+      "Allow for the 10-day posting period, return on the release date, pay the assessed license fee, and claim the license after signing the logbook."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "545–550",
+    "fee": "2026 charter total: PHP 270, excluding notarization. Confirm current fees and any charges for obtaining supporting documents.",
+    "timing": "2026 charter total: 10 days and 35 minutes, including the 10-day posting period; release is subject to LCRO review.",
+    "scope": "This is a preparation summary. The 2026 charter lists Pasay residents (both parties) under who may avail; confirm residency eligibility directly with LCRO. This is distinct from requesting a copy of an existing marriage certificate."
+  },
+  {
+    "id": "certificate-indigency",
+    "title": "Certificate of indigency for legal assistance",
+    "filipino": "Sertipiko ng indigency para sa tulong legal",
+    "category": "documents",
+    "description": "Use PSWDD’s specific checklist for a certificate of indigency requested for Public Attorney’s Office legal assistance.",
+    "office": "Pasay Social Welfare and Development Department (PSWDD)",
+    "sourceId": "charter-certificate-indigency",
+    "keywords": [
+      "certificate indigency",
+      "Sertipiko ng indigency para sa tulong legal",
+      "Pasay Social Welfare and Development Department (PSWDD)"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Barangay certificate/indigency (original and photocopy).",
+      "Certificate of no real property from the City Assessor (original and photocopy).",
+      "Certificate of no business from BPLO (original and photocopy).",
+      "Government-issued ID (original and photocopy).",
+      "If employed: income tax return or payslip (1 photocopy)."
+    ],
+    "steps": [
+      "Register at the PSWDD unit office serving your place of residence.",
+      "Submit the documents and attend the initial interview and assessment.",
+      "Expect a home visit and assessment report before preparation and signing of the certificate.",
+      "Claim the certificate at the PSWDD unit and sign the duplicate copy."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "496–504",
+    "fee": "2026 charter: no service fee for this PSWDD transaction. Supporting documents may have separate charges.",
+    "timing": "2026 charter total: 1 day, 1 hour and 39 minutes; confirm the current schedule.",
+    "scope": "This checklist is for PAO legal assistance. Certificates for financial, educational or medical assistance are covered by a different section beginning on p. 504."
+  },
+  {
+    "id": "medical-assistance",
+    "title": "Medical assistance through PSWDD",
+    "filipino": "Tulong medikal mula sa PSWDD",
+    "category": "family",
+    "description": "Find the medical-assistance documents listed in the city’s crisis-intervention service. Assistance depends on social-worker assessment; no amount or approval is promised.",
+    "office": "Pasay Social Welfare and Development Department (PSWDD) · Crisis Intervention Unit",
+    "sourceId": "charter-medical-assistance",
+    "keywords": [
+      "medical assistance",
+      "Tulong medikal mula sa PSWDD",
+      "Pasay Social Welfare and Development Department (PSWDD) · Crisis Intervention Unit"
+    ],
+    "action": "Open the official charter section",
+    "requirements": [
+      "Hospital bill (1 photocopy) and medical abstract (1 photocopy), from a DOH-accredited hospital.",
+      "For medicines: doctor’s prescription (1 photocopy) from a licensed physician.",
+      "Barangay certificate/indigency (1 original).",
+      "Government-issued ID (original and photocopy)."
+    ],
+    "steps": [
+      "Register in the client logbook at PSWDD’s receiving section.",
+      "Submit the documents to the Crisis Intervention Unit worker.",
+      "Attend the intake interview and assessment, then follow the office’s instructions about release of assistance."
+    ],
+    "edition": "2026 Citizen’s Charter",
+    "pages": "313–315",
+    "scope": "The 2026 charter has separate burial and medical checklists in this section. This page summarizes medical assistance only; the currently applicable assistance amount, release availability and complete timing/fee position are not verified here."
+  }
+]

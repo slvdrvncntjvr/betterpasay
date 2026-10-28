@@ -1,0 +1,241 @@
+[
+  {
+    "id": "citizens-charter-2026",
+    "title": "Citizen’s Charter 2026",
+    "description": "The city’s complete service handbook. Search within the PDF for the office or transaction you need; selected sections are indexed below.",
+    "category": "charters",
+    "sourceId": "charter",
+    "edition": "2026 · 1st Edition",
+    "pages": "1,193 pages · about 28.5 MB"
+  },
+  {
+    "id": "birth-certificate-guide",
+    "title": "Birth, marriage & death certificate copies",
+    "description": "Request a certified copy of a birth record registered in Pasay. This guide covers the local civil registry copy; check the receiving agency’s required document format.",
+    "category": "service-guides",
+    "sourceId": "charter-birth-certificate",
+    "serviceId": "birth-certificate",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 524–526"
+  },
+  {
+    "id": "pwd-id-guide",
+    "title": "PWD ID & purchase booklet — new application",
+    "description": "Prepare for a new PWD ID and purchase booklet application. The charter has different checklists for personal applications and representatives.",
+    "category": "service-guides",
+    "sourceId": "charter-pwd-id",
+    "serviceId": "pwd-id",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 167–170"
+  },
+  {
+    "id": "pwd-id-renewal-guide",
+    "title": "PWD ID & booklet renewal",
+    "description": "Renew a Pasay-issued PWD ID and booklet using the renewal checklist, rather than the new-application checklist.",
+    "category": "service-guides",
+    "sourceId": "charter-pwd-id-renewal",
+    "serviceId": "pwd-id-renewal",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 170–172"
+  },
+  {
+    "id": "solo-parent-id-guide",
+    "title": "Solo parent ID",
+    "description": "Find the city’s solo parent ID checklist and social-worker assessment process. Eligibility is assessed by PSWDD for your circumstances.",
+    "category": "service-guides",
+    "sourceId": "charter-solo-parent-id",
+    "serviceId": "solo-parent-id",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 579–587"
+  },
+  {
+    "id": "health-certificate-guide",
+    "title": "Work health certificate — new application",
+    "description": "Prepare for a City Health Office certificate for employees of business establishments operating in Pasay. This is an administrative service guide, not medical advice.",
+    "category": "service-guides",
+    "sourceId": "charter-health-certificate",
+    "serviceId": "health-certificate",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 120–125"
+  },
+  {
+    "id": "marriage-license-guide",
+    "title": "Marriage license application",
+    "description": "Review the application process and the separate checklists by age, nationality and civil status before visiting the local civil registry.",
+    "category": "service-guides",
+    "sourceId": "charter-marriage-license",
+    "serviceId": "marriage-license",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 545–550"
+  },
+  {
+    "id": "certificate-indigency-guide",
+    "title": "Certificate of indigency for legal assistance",
+    "description": "Use PSWDD’s specific checklist for a certificate of indigency requested for Public Attorney’s Office legal assistance.",
+    "category": "service-guides",
+    "sourceId": "charter-certificate-indigency",
+    "serviceId": "certificate-indigency",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 496–504"
+  },
+  {
+    "id": "medical-assistance-guide",
+    "title": "Medical assistance through PSWDD",
+    "description": "Find the medical-assistance documents listed in the city’s crisis-intervention service. Assistance depends on social-worker assessment; no amount or approval is promised.",
+    "category": "service-guides",
+    "sourceId": "charter-medical-assistance",
+    "serviceId": "medical-assistance",
+    "edition": "2026 · Charter section",
+    "pages": "Pages 313–315"
+  },
+  {
+    "id": "senior-guide",
+    "title": "Senior citizen ID & booklet",
+    "description": "Official application guide for the senior citizen card and purchase booklet.",
+    "category": "service-guides",
+    "sourceId": "senior",
+    "serviceId": "senior-citizen-id",
+    "edition": "Edition not stated",
+    "pages": "Standalone service guide"
+  },
+  {
+    "id": "cedula-guide",
+    "title": "Community tax certificate (cedula)",
+    "description": "Treasurer’s service guide; confirm the applicable tax computation.",
+    "category": "service-guides",
+    "sourceId": "cedula",
+    "serviceId": "community-tax",
+    "edition": "Edition not stated",
+    "pages": "Standalone service guide"
+  },
+  {
+    "id": "clearance-guide",
+    "title": "Mayor’s clearance",
+    "description": "Separate application checklists by purpose in the official guide.",
+    "category": "service-guides",
+    "sourceId": "clearance",
+    "serviceId": "mayors-clearance",
+    "edition": "Edition not stated",
+    "pages": "Standalone service guide"
+  },
+  {
+    "id": "building-guide",
+    "title": "Building permit application",
+    "description": "City building permit service guide, including supporting documentation.",
+    "category": "service-guides",
+    "sourceId": "building",
+    "serviceId": "building-permit",
+    "edition": "Edition not stated",
+    "pages": "Standalone service guide"
+  },
+  {
+    "id": "property-tax-guide",
+    "title": "Real property tax payments",
+    "description": "Official payment process; confirm your property assessment with the city.",
+    "category": "service-guides",
+    "sourceId": "property-tax",
+    "serviceId": "real-property-tax",
+    "edition": "Edition not stated",
+    "pages": "Standalone service guide"
+  },
+  {
+    "id": "cremation-guide",
+    "title": "Cremation services",
+    "description": "City crematorium guide to documents, scheduling and applicable charges.",
+    "category": "service-guides",
+    "sourceId": "cremation",
+    "serviceId": "cremation-services",
+    "edition": "Edition not stated",
+    "pages": "Standalone service guide"
+  },
+  {
+    "id": "forms-document",
+    "title": "Downloadable procurement forms",
+    "description": "Official forms index. The reviewed collection lists procurement documents, rather than resident ID or civil-registry application forms.",
+    "category": "forms",
+    "sourceId": "forms",
+    "edition": "Official collection",
+    "pages": "Source index"
+  },
+  {
+    "id": "csmr-document",
+    "title": "Client Satisfaction Measurement Report 2025",
+    "description": "City report on public service feedback. Cover, contents and scope reviewed; statistics are not transcribed here.",
+    "category": "reports",
+    "sourceId": "csmr",
+    "edition": "2025 report",
+    "pages": "Report PDF"
+  },
+  {
+    "id": "fro-document",
+    "title": "Financial Report of Operations — September 2026",
+    "description": "Official budget index links this report as of 30 September 2026. Image-based financial tables have not been transcribed or analyzed.",
+    "category": "reports",
+    "sourceId": "fro",
+    "edition": "2026 report",
+    "pages": "Report PDF"
+  },
+  {
+    "id": "budget-document",
+    "title": "City budget reports",
+    "description": "Official index of budget ordinances and financial reports. Open the index for the city’s available years.",
+    "category": "reports",
+    "sourceId": "budget",
+    "edition": "Official collection",
+    "pages": "Source index"
+  },
+  {
+    "id": "laws-document",
+    "title": "City ordinances & resolutions",
+    "description": "City Secretariat records on a separate domain linked by the official city transparency page.",
+    "category": "policies",
+    "sourceId": "laws",
+    "edition": "Official collection",
+    "pages": "Source index"
+  },
+  {
+    "id": "goods-bid-security",
+    "title": "Goods & services bid-securing declaration",
+    "description": "Bid-security declaration template with bidder, signature and notarization fields. Follow the requirements in the relevant bidding documents.",
+    "category": "forms",
+    "sourceId": "goods-bid-security",
+    "edition": "Edition not stated",
+    "pages": "Procurement template"
+  },
+  {
+    "id": "omnibus-statement",
+    "title": "Omnibus sworn statement",
+    "description": "Bidder declarations with entity, authority and jurat fields. The city groups this under goods/services although its filename says infrastructure.",
+    "category": "forms",
+    "sourceId": "omnibus-statement",
+    "edition": "Edition not stated",
+    "pages": "Procurement template"
+  },
+  {
+    "id": "infra-bid-security",
+    "title": "Infrastructure bid-securing declaration",
+    "description": "Infrastructure bid-security template with signature and jurat fields. Read its conditional submission instructions and the bidding documents.",
+    "category": "forms",
+    "sourceId": "infra-bid-security",
+    "edition": "Edition not stated",
+    "pages": "Procurement template"
+  },
+  {
+    "id": "infra-bid-form",
+    "title": "Infrastructure project bid form",
+    "description": "Works bid and pricing template. Its instructions require every page, including the price schedule, to be signed.",
+    "category": "forms",
+    "sourceId": "infra-bid-form",
+    "edition": "Edition not stated",
+    "pages": "Procurement template"
+  },
+  {
+    "id": "goods-bid-form",
+    "title": "Procurement of goods bid form",
+    "description": "Goods bid and pricing template with signatory-authority and every-page signature instructions. Use the applicable bidding documents.",
+    "category": "forms",
+    "sourceId": "goods-bid-form",
+    "edition": "Edition not stated",
+    "pages": "Procurement template"
+  }
+]
