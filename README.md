@@ -4,6 +4,8 @@ An independent, community-led public information portal for **Pasay City, Metro 
 
 **Status: Work in Progress.** The redesigned portal is implemented locally. No public deployment has been made.
 
+**Design variant:** this branch, `design/pasay-city-palette`, applies the official Pasay website’s rose, berry and eco-green palette. The approved navy-and-yellow design is saved on `main` at [`5eee77d`](https://github.com/slvdrvncntjvr/betterpasay/commit/5eee77d). See [the palette reference and comparison notes](docs/CITY-PALETTE.md).
+
 | Field                            | Details                                                                                                                           |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | Repository                       | [slvdrvncntjvr/betterpasay](https://github.com/slvdrvncntjvr/betterpasay)                                                         |
@@ -16,7 +18,7 @@ Better Pasay is not an official Pasay City government website. It does not claim
 
 ## What works
 
-- A redesigned navy, white and yellow interface with locally hosted typography, licensed Pasay photographs, service search and task shortcuts.
+- A redesigned interface with locally hosted typography, licensed Pasay photographs, service search and task shortcuts; this branch explores the city’s rose, berry and eco-green colors.
 - Twenty-one sourced service entries, including civil registry records, PWD and solo-parent IDs, health certificates and medical assistance.
 - Detailed guides with selected charter-backed requirements and steps; fees, timings and source editions are included where verified.
 - A searchable library of 25 official guides, forms, charter sections and public-record collections.
