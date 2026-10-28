@@ -1,6 +1,6 @@
-# Pasay city palette variant
+# Selected Pasay city palette
 
-The approved navy-and-yellow portal is preserved on `main` at commit `5eee77d`. This branch, `design/pasay-city-palette`, explores the same layout using the colors of the [official Pasay City website](https://pasay.gov.ph/).
+The selected design on `main` and `dev` uses the colors of the [official Pasay City website](https://pasay.gov.ph/). The earlier navy-and-yellow portal remains in Git history at commit `5eee77d`. The palette was developed in `design/pasay-city-palette` and then accepted for both maintained branches.
 
 The reference was opened and visually reviewed in Orca on **28 October 2026**. Computed foreground/background styles were sampled from the rendered page, rather than inferred from a screenshot alone.
 
@@ -23,4 +23,4 @@ The portal keeps its independent community identity and its existing disclosure.
 
 The pink utility bar uses white text throughout to meet the checked contrast requirement. The reference palette is retained while darker green and rose support readable small text. ESLint now excludes ignored local preview artifacts under `.local/`, consistent with Git and Prettier.
 
-For local comparison during this session, the approved build is served at `http://127.0.0.1:4324/` and the city-palette development preview at `http://127.0.0.1:4321/`. The approved preview is an ignored local build snapshot, not a second published site. After a restart, `git switch main` restores the saved design; `git switch design/pasay-city-palette` restores this version, and `npm run dev` starts the selected source.
+The temporary comparison previews were stopped after selection. Both `git switch main` and `git switch dev` now select the Pasay-palette design. Run `npm run dev` to start a local preview. The previous design can be inspected at commit `5eee77d`; the ignored comparison snapshot is a local artifact, not a published site.
